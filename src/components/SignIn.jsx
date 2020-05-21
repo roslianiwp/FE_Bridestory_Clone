@@ -1,8 +1,6 @@
 import React, { Fragment } from "react";
-import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn } from "mdbreact";
-// import "@fortawesome/fontawesome-free/css/all.min.css";
-// import "bootstrap-css-only/css/bootstrap.min.css";
-// import "mdbreact/dist/css/mdb.css";
+import { MDBContainer, MDBRow, MDBCol, MDBInput } from "mdbreact";
+import "../css/SignIn.css";
 
 const SignIn = () => {
   return (
@@ -11,27 +9,28 @@ const SignIn = () => {
         <MDBRow>
           <MDBCol md="6">
             <form>
-              <p className="h5 text-center mb-4">Sign in</p>
               <div className="grey-text">
                 <MDBInput
-                  label="Type your email"
-                  icon="envelope"
+                  label="Email Address"
                   group
                   type="email"
                   validate
                   error="wrong"
                   success="right"
+                  style={{ width: "300px" }}
                 />
                 <MDBInput
-                  label="Type your password"
-                  icon="lock"
+                  label="Password"
                   group
                   type="password"
                   validate
+                  style={{ width: "300px" }}
                 />
               </div>
               <div className="text-center">
-                <MDBBtn>Login</MDBBtn>
+                <button className="buton" type="button">
+                  Sign Up or Log in
+                </button>
               </div>
             </form>
           </MDBCol>

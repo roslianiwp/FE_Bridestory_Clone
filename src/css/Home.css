@@ -1,8 +1,12 @@
+.bodi {
+  background-image: url("https://alexandra.bridestory.com/image/upload/f_auto,dpr_auto,q_80,fl_progressive/assets/bg-landing2x-SkNfGMwsX.jpg");
+  background-size: cover;
+}
 .jumbotron {
   background-color: black;
   background-image: url("../images/jumbotron.png");
   background-size: cover;
-  height: 690px;
+  height: 750px;
   animation: jumbo_anim 60s linear;
   /* animation-direction: normal; */
 }
@@ -78,7 +82,7 @@
 .fa-hourglass-half,
 .fa-credit-card,
 .fa-file-invoice-dollar {
-  color: #f1c5c8;
+  color: #eba1a1;
 }
 
 .logo-login {
@@ -108,6 +112,9 @@
   border-radius: 5px;
   font-size: 18px;
   padding: 12px 38px;
+  color: white;
+  border: 1px white solid;
+  background: none;
 }
 
 .learn-more:hover {
@@ -122,13 +129,16 @@
 }
 
 .login {
-  margin-right: -150px;
+  margin-right: -200px;
   background-color: #ffffff;
-  padding: 40px 70px 10px;
-  border-radius: 18px 18px;
+  padding-right: 70px;
+  padding-left: 70px;
+  padding-top: 20px;
+  padding-bottom: 0px;
+  border-radius: 18px 18px 0 0;
   box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.24);
-  margin-top: auto;
-  height: 600px;
+  margin-top: -20px;
+  height: 650px;
 }
 
 .login p {
@@ -144,6 +154,55 @@
   max-height: 70px;
 }
 
+.tncp {
+  padding-bottom: 10px;
+  font-size: 14px;
+  letter-spacing: 0.2px;
+  line-height: 20px;
+  color: #848484;
+}
+
+.tncspan {
+  color: #eba1a1;
+}
+
 .navbar {
   margin-top: -40px;
+}
+
+.join-vendor {
+  margin-top: 0px;
+  margin-right: 5px;
+  width: 451px;
+  font-size: 15px;
+  background-color: hsla(0, 0%, 100%, 0.8);
+  border-radius: 0 0 18px 18px;
+  color: #848484;
+}
+
+.join-vendor span {
+  color: #eba1a1;
+  letter-spacing: 0.21px;
+  line-height: 20px;
+}
+.modal-content {
+  background-color: transparent !important;
+  box-shadow: none !important;
+  margin-left: 50px !important;
+}
+
+.join-vendor-modal {
+  margin-top: 0px;
+  /* margin-right: 122px; */
+  width: 451px;
+  font-size: 15px;
+  background-color: hsla(0, 0%, 100%, 0.8);
+  border-radius: 0 0 18px 18px;
+  color: #848484;
+}
+
+.join-vendor-modal span {
+  color: #eba1a1;
+  letter-spacing: 0.21px;
+  line-height: 20px;
 }
