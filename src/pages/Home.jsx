@@ -27,7 +27,7 @@ class Home extends React.Component {
     const scrollable =
       document.documentElement.scrollHeight - window.innerHeight;
     const scrolled = window.scrollY;
-    if (Math.ceil(scrolled) === scrollable) {
+    if (Math.ceil(scrolled) >= scrollable) {
       this.setState({
         modal: true,
       });

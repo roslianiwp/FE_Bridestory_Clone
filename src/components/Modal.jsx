@@ -98,7 +98,12 @@ const ModalKu = () => {
                 </span>{" "}
                 applied.
                 <br />
-                <hr style={{ marginBottom: "5px", marginTop: "5px" }} />
+                <hr
+                  style={{
+                    marginBottom: "5px",
+                    marginTop: "5px",
+                  }}
+                />
                 Have a wedding business?
                 <span className="tncspan-modal"> Join us as a vendor.</span>
               </p>
@@ -106,15 +111,6 @@ const ModalKu = () => {
           </div>
         </MDBCol>
       </MDBRow>
-
-      {/* <MDBRow className="d-flex justify-content-center text-center">
-        <div className="join-vendor-modal">
-          <p>
-            Have a wedding business?
-            <span>Join us as a vendor.</span>
-          </p>
-        </div>
-      </MDBRow> */}
     </Fragment>
   );
 };
