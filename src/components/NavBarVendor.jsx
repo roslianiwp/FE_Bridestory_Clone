@@ -15,7 +15,11 @@ import {
 } from "mdbreact";
 import "../css/Vendors.css";
 
-const NavBarVendor = (props) => {
+const NavBarVendor = (props, postSignout) => {
+  postSignout = () => {
+    props.doSignOut();
+    props.history.push("/");
+  };
   return (
     <Fragment>
       {/* START NAVBAR PERTAMA */}
@@ -103,7 +107,7 @@ const NavBarVendor = (props) => {
                     <span className="imgs-menu imgs-menu--setting dd"></span>
                     Pengaturan User
                   </MDBDropdownItem>
-                  <MDBDropdownItem href="#!">
+                  <MDBDropdownItem href="#!" onClick={() => postSignout()}>
                     <span className="imgs-menu imgs-menu--logout dd"></span>
                     Keluar
                   </MDBDropdownItem>

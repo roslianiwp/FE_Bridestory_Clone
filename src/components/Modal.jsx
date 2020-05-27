@@ -1,8 +1,9 @@
 import React, { Fragment } from "react";
-import { MDBRow, MDBCol, MDBInput } from "mdbreact";
+import { MDBRow, MDBCol } from "mdbreact";
 import "../css/Modal.css";
+import SignIn from "./SignIn";
 
-const ModalKu = () => {
+const ModalKu = (props) => {
   return (
     <Fragment>
       <MDBRow>
@@ -60,35 +61,7 @@ const ModalKu = () => {
                 }}
               />
             </MDBRow>
-            <MDBRow>
-              <MDBCol md="6">
-                <form>
-                  <div className="grey-text">
-                    <MDBInput
-                      label="Email Address"
-                      group
-                      type="email"
-                      validate
-                      error="wrong"
-                      success="right"
-                      style={{ width: "300px" }}
-                    />
-                    <MDBInput
-                      label="Password"
-                      group
-                      type="password"
-                      validate
-                      style={{ width: "300px" }}
-                    />
-                  </div>
-                  <div className="text-center">
-                    <button className="buton-modal" type="button">
-                      Sign Up or Log in
-                    </button>
-                  </div>
-                </form>
-              </MDBCol>
-            </MDBRow>
+            <SignIn {...props} />
             <MDBRow>
               <p className="tncp-modal">
                 By signing up, you are agree with the{" "}

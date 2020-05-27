@@ -1,9 +1,15 @@
 import React, { Fragment } from "react";
+import { connect } from "react-redux";
+import {
+  doLogin,
+  changeInputUser,
+  doSignUp,
+  // patchSignUp,
+} from "../store/action/userAction";
 import Typist from "react-typist";
 import { MDBJumbotron, MDBContainer, MDBRow, MDBCol, MDBModal } from "mdbreact";
 import "../css/Home.css";
 import NavBar from "../components/NavBar";
-// import NavBarDua from "../components/NavBar2";
 import Footer from "../components/Footer";
 import KotakLogIn from "../components/KotakLogIn";
 import JoinVendor from "../components/JoinVendor";
@@ -27,22 +33,16 @@ class Home extends React.Component {
     const scrollable =
       document.documentElement.scrollHeight - window.innerHeight;
     const scrolled = window.scrollY;
+
     if (Math.ceil(scrolled) >= scrollable) {
       this.setState({
         modal: true,
       });
-      console.log("masuk ke modal true");
     } else if (scrolled === 0 || Math.ceil(scrolled) !== scrollable) {
       this.setState({
         modal: false,
       });
-      console.log("masuk ke modal false");
     }
-    // else {
-    //   this.setState({
-    //     modal: !this.state.modal,
-    //   });
-    // }
   };
 
   render() {
@@ -98,7 +98,7 @@ class Home extends React.Component {
                   </button>
                 </MDBCol>
                 {/* KOTAK LOGIN */}
-                <KotakLogIn />
+                <KotakLogIn {...this.props} />
               </MDBRow>
               <JoinVendor />
             </MDBContainer>
@@ -111,14 +111,27 @@ class Home extends React.Component {
         </div>
         <div onScroll={this.toggle}>
           <MDBModal isOpen={this.state.modal} className="modalku">
-            <ModalKu />
+            <ModalKu {...this.props} />
           </MDBModal>
         </div>
-
-        {/* </MDBContainer> */}
       </Fragment>
     );
   }
 }
+const mapStateToProps = (state) => {
+  return {
+    emailPengguna: state.user.emailPengguna,
+    kataKunci: state.user.kataKunci,
+    login: state.user.is_login,
+    loading: state.user.isLoading,
+    is_signup: state.user.is_signup,
+  };
+};
 
-export default Home;
+const mapDispatchToProps = {
+  changeInput: (e) => changeInputUser(e),
+  doLogin,
+  doSignUp,
+  // patchSignUp,
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

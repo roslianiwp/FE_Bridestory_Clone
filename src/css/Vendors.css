@@ -143,9 +143,19 @@
 }
 /* DD FILTER */
 .dd-filter {
-  margin-top: 5px;
+  margin-top: 2px;
   background-color: white !important;
   border-bottom: #d9d8d8 1px solid;
+  font-size: 15px;
+  margin-left: 10px;
+  left: -1px;
+  top: -1px;
+  color: #555;
+  line-height: 17px;
+  padding: 12px 36px 12px 12px;
+  box-sizing: border-box;
+
+  /* font-weight: 200; */
 }
 .buton-dd-filter {
   border-radius: 5px !important;
@@ -167,11 +177,12 @@
   color: white;
   border: none !important;
   height: 30px;
-  margin-top: 10px;
+  margin-left: 10px;
 }
 
 /* breadcrumbs */
 .breadkrum {
+  margin-right: 0px !important;
   border-bottom: #d9d8d8 1px solid;
   /* margin-left: 100px !; */
 }
@@ -194,6 +205,7 @@
 }
 /* filter dan judul */
 .sebelum-filter {
+  margin-right: 0px !important;
   margin-top: 30px;
   margin-bottom: 20px;
   color: #555555 !important;
@@ -217,6 +229,7 @@
 /* CARD */
 .row-card {
   margin-top: 40px;
+  margin-left: 0px;
 }
 .cardku {
   width: 238px;
