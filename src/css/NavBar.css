@@ -10,7 +10,7 @@
 }
 .menu {
   margin-left: 20px;
-  color: #3f3e3f !important;
+  color: #555 !important;
 }
 #badge-new {
   line-height: 5px;
@@ -24,4 +24,8 @@
   margin-right: 5px;
   display: -webkit-inline-box;
   display: inline-flex;
+}
+.navini {
+  margin-top: -39px !important;
+  background-color: white;
 }

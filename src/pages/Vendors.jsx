@@ -10,13 +10,16 @@ import {
   changeInputFilterKota,
   changeInputFilterBudget,
   getVendor,
+  getVendorBspay,
+  getVendorFlexi,
+  getVendorBspayFlexi,
 } from "../store/action/filterAction";
 import NavBarVendor from "../components/NavBarVendor";
 import "../css/Vendors.css";
 import FilterKategori from "../components/FilterKategori";
 import Cards from "../components/Card";
 import BreadCrumbs from "../components/BreadCrumbs";
-import { MDBRow, MDBBtn } from "mdbreact";
+import { MDBRow, MDBBtn, MDBCol } from "mdbreact";
 import FilterNegara from "../components/FilterNegara";
 import FilterKota from "../components/FilterKota";
 import FilterHarga from "../components/FilterHarga";
@@ -32,12 +35,53 @@ class Vendors extends React.Component {
     this.setState({ isOpen: !this.state.isOpen });
   };
 
-  handleChangeBspay = () => {
-    this.setState({ checked: !this.state.checkedBspay });
+  handleChangeBspay = async () => {
+    this.setState({ checkedBspay: !this.state.checkedBspay });
+    console.log("bspay", this.state.checkedBspay);
+    console.log("flex", this.state.checkedFlexi);
+    if (
+      this.state.checkedBspay === false &&
+      this.state.checkedFlexi === false
+    ) {
+      await this.props.getVendorBspay();
+    } else if (
+      this.state.checkedBspay === false &&
+      this.state.checkedFlexi === true
+    ) {
+      await this.props.getVendorBspayFlexi();
+    } else if (
+      this.state.checkedBspay === true &&
+      this.state.checkedFlexi === true
+    ) {
+      await this.props.getVendorFlexi();
+    }
   };
 
-  handleChangeFlexi = () => {
-    this.setState({ checked: !this.state.checkedFlexi });
+  handleChangeFlexi = async () => {
+    this.setState({ checkedFlexi: !this.state.checkedFlexi });
+    console.log("bspay dari flexi", this.state.checkedBspay);
+    console.log("flex dari flexi", this.state.checkedFlexi);
+    if (
+      this.state.checkedBspay === false &&
+      this.state.checkedFlexi === false
+    ) {
+      await this.props.getVendorFlexi();
+    } else if (
+      this.state.checkedFlexi === false &&
+      this.state.checkedBspay === true
+    ) {
+      await this.props.getVendorBspayFlexi();
+    } else if (
+      this.state.checkedBspay === false &&
+      this.state.checkedFlexi === true
+    ) {
+      await this.props.getVendor();
+    } else if (
+      this.state.checkedBspay === true &&
+      this.state.checkedFlexi === true
+    ) {
+      await this.props.getVendorBspay();
+    }
   };
 
   handleCariVendor = async () => {
@@ -95,7 +139,28 @@ class Vendors extends React.Component {
           kategori={this.props.dataKategori}
         />
         {/* CARD OF CONTENT */}
-        <Cards dataVendor={this.props.dataVendor} />
+        {this.props.isLoading ? (
+          <MDBRow
+            className="d-flex justify-content-center"
+            style={{ marginRight: "0px" }}
+          >
+            <MDBCol md="12 d-flex justify-content-center">
+              <div>
+                <img
+                  src="https://www.bridestory.com/images/loadersmall.gif"
+                  alt="loading"
+                  style={{ marginTop: "10px", marginLeft: "-10px" }}
+                ></img>
+                {/* <img
+                  src="https://3.bp.blogspot.com/-eZG6YtZKdr4/WnLKLHHDZkI/AAAAAAAAChA/FHelaYBRPIAaj1fBNh8geGy64RTHEzRzQCLcBGAs/s1600/loader.gif"
+                  alt="loading"
+                ></img> */}
+              </div>
+            </MDBCol>
+          </MDBRow>
+        ) : (
+          <Cards dataVendor={this.props.dataVendor} />
+        )}
       </Fragment>
     );
   }
@@ -106,6 +171,7 @@ const mapStateToProps = (state) => {
     kataKunci: state.user.kataKunci,
     login: state.user.is_login,
     loading: state.user.isLoading,
+    isLoginFB: state.user.isLoginFB,
     dataKategori: state.filter.dataKategori,
     dataNegara: state.filter.dataNegara,
     dataKota: state.filter.dataKota,
@@ -114,6 +180,7 @@ const mapStateToProps = (state) => {
     cityID: state.filter.cityID,
     budget: state.filter.budget,
     dataVendor: state.filter.dataVendor,
+    isLoading: state.filter.isLoadingVendor,
   };
 };
 
@@ -127,5 +194,8 @@ const mapDispatchToProps = {
   changeInputFilterKota,
   changeInputFilterBudget,
   getVendor,
+  getVendorBspay,
+  getVendorFlexi,
+  getVendorBspayFlexi,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Vendors);

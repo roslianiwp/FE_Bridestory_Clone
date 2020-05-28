@@ -302,3 +302,44 @@
   border-radius: 3px;
   margin-bottom: 20px;
 }
+/* badge di card */
+.bspay-badge {
+  height: 22px;
+  position: absolute;
+  left: -7px;
+  top: 7px;
+  background: #fff;
+  border: 1px solid #d9d8d8;
+  border-top-right-radius: 100px;
+  border-bottom-right-radius: 100px;
+  border-top-left-radius: 40px;
+  color: #6099a7;
+  line-height: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: left;
+  padding: 0 2px 1px 2px;
+  letter-spacing: 0.2px;
+}
+.badge-bsp-logo {
+  display: inline-block;
+  width: 75px;
+  height: 14px;
+  background: url(https://london.bridestory.com/image/upload/assets/logo-bspay-SkgYuhIRf.png)
+    no-repeat center;
+  background-size: cover;
+  margin-bottom: -3px;
+  margin-left: 3px;
+}
+.flexi-badge {
+  width: 59px;
+  height: auto;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+/* isloading */
+/* .loadingkuu {
+  background-color: hotpink;
+  background: url("https://www.bridestory.com/images/loadersmall.gif");
+} */

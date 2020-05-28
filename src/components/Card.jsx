@@ -65,6 +65,23 @@ const Cards = (props) => {
                       </button>
                     </MDBCol>
                   </MDBRow>
+                  {el.bridestory_pay ? (
+                    <div className="bspay-badge">
+                      <i class="fas fa-check-circle"></i>
+                      <span class="badge-bsp-logo"></span>
+                    </div>
+                  ) : (
+                    false
+                  )}
+                  {el.city_id.country_id.name === "Indonesia" ? (
+                    <img
+                      className="flexi-badge"
+                      src="https://alexandra.bridestory.com/image/upload/assets/badge_desktop-1-HkCI5OT_8.png"
+                      alt="flexi"
+                    ></img>
+                  ) : (
+                    false
+                  )}
                 </MDBCard>
               </MDBCol>
             </div>

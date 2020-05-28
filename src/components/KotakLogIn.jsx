@@ -2,6 +2,10 @@ import React, { Fragment } from "react";
 import { MDBRow, MDBCol } from "mdbreact";
 import "../css/Home.css";
 import SignIn from "./SignIn.jsx";
+import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
+// import FacebookLogin from "react-facebook-login";
+import { GoogleLogin } from "react-google-login";
+
 // import JoinVendor from "./JoinVendor";
 
 const KotakLogIn = (props, clickSignUp) => {
@@ -9,6 +13,21 @@ const KotakLogIn = (props, clickSignUp) => {
     await props.doSignUp();
     props.history.push("/vendors");
   };
+  // state = {
+  //   name: "",
+  //   picture: "",
+
+  // };
+  const responseFacebook = (response) => {
+    console.log(response);
+    props.logInFB();
+    props.history.push("/vendors");
+  };
+
+  const responseGoogle = (response) => {
+    console.log(response);
+  };
+
   return (
     <Fragment>
       <MDBCol md={5} className="d-flex justify-content-end text-center">
@@ -68,24 +87,60 @@ const KotakLogIn = (props, clickSignUp) => {
               <p style={{ color: "#555" }}>Login with: </p>
               <MDBRow>
                 <MDBCol md={6}>
-                  <div className="kotak-kecil-login">
-                    <img
-                      src="https://alexandra.bridestory.com/image/upload/assets/facebook2x-H10SkJiD8.png"
-                      alt="fb"
-                      className="fb-google"
-                    ></img>
-                    <span className="logo-login">Facebook</span>
-                  </div>
+                  <FacebookLogin
+                    appId="588676948421286"
+                    autoLoad={false}
+                    callback={responseFacebook}
+                    fields="name,picture"
+                    render={(renderProps) => (
+                      <div className="kotak-kecil-login">
+                        <img
+                          src="https://alexandra.bridestory.com/image/upload/assets/facebook2x-H10SkJiD8.png"
+                          alt="fb"
+                          className="fb-google"
+                        ></img>
+                        <span
+                          className="logo-login"
+                          onClick={renderProps.onClick}
+                        >
+                          Facebook
+                        </span>
+                      </div>
+                    )}
+                  />
                 </MDBCol>
                 <MDBCol md={6}>
-                  <div className="kotak-kecil-login">
+                  <GoogleLogin
+                    clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
+                    render={(renderProps) => (
+                      <div className="kotak-kecil-login">
+                        <img
+                          src="https://alexandra.bridestory.com/image/upload/assets/google-logo2x-rkgZVmis7.png"
+                          alt="google"
+                          className="fb-google"
+                        ></img>
+                        <span
+                          className="logo-login"
+                          onClick={renderProps.onClick}
+                          disabled={renderProps.disabled}
+                        >
+                          Google
+                        </span>
+                      </div>
+                    )}
+                    buttonText="Login"
+                    onSuccess={responseGoogle}
+                    onFailure={responseGoogle}
+                    cookiePolicy={"single_host_origin"}
+                  />
+                  {/* <div className="kotak-kecil-login">
                     <img
                       src="https://alexandra.bridestory.com/image/upload/assets/google-logo2x-rkgZVmis7.png"
                       alt="google"
                       className="fb-google"
                     ></img>
                     <span className="logo-login">Google</span>
-                  </div>
+                  </div> */}
                 </MDBCol>
               </MDBRow>
               <MDBRow style={{ marginTop: "10px" }}>

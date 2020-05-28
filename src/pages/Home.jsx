@@ -4,7 +4,7 @@ import {
   doLogin,
   changeInputUser,
   doSignUp,
-  // patchSignUp,
+  logInFB,
 } from "../store/action/userAction";
 import Typist from "react-typist";
 import { MDBJumbotron, MDBContainer, MDBRow, MDBCol, MDBModal } from "mdbreact";
@@ -132,6 +132,7 @@ const mapDispatchToProps = {
   changeInput: (e) => changeInputUser(e),
   doLogin,
   doSignUp,
+  logInFB,
   // patchSignUp,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

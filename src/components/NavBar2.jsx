@@ -1,17 +1,8 @@
 import React, { Fragment } from "react";
 import { Navbar, Nav } from "react-bootstrap";
 import "../css/NavBarDua.css";
-import $ from "jquery";
 
 const NavBarDua = () => {
-  $(window).scroll(function () {
-    if ($(document).scrollTop() > 1000) {
-      $("#nav-home").addClass("diplay-inline");
-    } else if ($(document).scrollTop() < 1) {
-      $("#nav-home").removeClass("display-none");
-    }
-  });
-
   return (
     <Fragment>
       <div id="nav-home">

@@ -9,6 +9,7 @@ const initialState = {
   firstName: "",
   lastName: "",
   isLoading: false,
+  isLoginFB: false,
   data: [],
 };
 
@@ -47,6 +48,11 @@ export default function userReducer(userState = initialState, action) {
       return {
         ...userState,
         is_signup: false,
+      };
+    case "SUCCESS_LOGIN_FB":
+      return {
+        ...userState,
+        isLoginFB: true,
       };
     default:
       return userState;

@@ -5,7 +5,7 @@ export const doLogin = () => {
     await dispatch({ type: "ACTIVATE_LOADING" });
     axios({
       method: "GET",
-      url: "http://0.0.0.0:5050/login",
+      url: "https://127.0.0.1:5000/login",
       params: {
         email: getState().user.emailPengguna,
         password: getState().user.kataKunci,
@@ -19,7 +19,8 @@ export const doLogin = () => {
           localStorage.setItem("is_login", true);
         }
       })
-      .catch(async (response) => {
+      .catch(async (error) => {
+        console.log(error);
         await dispatch(doSignUp);
         dispatch({ type: "MAU_SIGNUP" });
       });
@@ -37,7 +38,7 @@ export const doSignUp = () => {
     };
     const myJSON = JSON.stringify(bodyRequest);
     await axios
-      .post("http://0.0.0.0:5050/client", myJSON, {
+      .post("https://127.0.0.1:5000/client", myJSON, {
         headers: {
           "Content-Type": "application/json; charset=utf-8",
           Accept: "application/json; charset=utf-8",
@@ -64,5 +65,11 @@ export const doSignOut = () => {
   localStorage.removeItem("is_login");
   return {
     type: "SUCCESS_LOGOUT",
+  };
+};
+
+export const logInFB = () => {
+  return {
+    type: "SUCCESS_LOGIN_FB",
   };
 };

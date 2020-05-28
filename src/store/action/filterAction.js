@@ -5,7 +5,7 @@ export const getKategori = () => {
     await dispatch({ type: "ACTIVATE_LOADING" });
     axios({
       method: "GET",
-      url: "http://0.0.0.0:5050/category",
+      url: "https://127.0.0.1:5000/category",
     })
       .then(async (response) => {
         dispatch({ type: "SUCCESS_GET_CATEGORY", payload: response.data });
@@ -21,7 +21,7 @@ export const getNegara = () => {
     await dispatch({ type: "ACTIVATE_LOADING" });
     axios({
       method: "GET",
-      url: "http://0.0.0.0:5050/country",
+      url: "https://127.0.0.1:5000/country",
     })
       .then(async (response) => {
         dispatch({ type: "SUCCESS_GET_COUNTRY", payload: response.data });
@@ -37,7 +37,7 @@ export const getKota = () => {
     await dispatch({ type: "ACTIVATE_LOADING" });
     axios({
       method: "GET",
-      url: "http://0.0.0.0:5050/city",
+      url: "https://127.0.0.1:5000/city",
       params: {
         country_id: getState().filter.countryID,
       },
@@ -52,8 +52,13 @@ export const getKota = () => {
 };
 
 export const getVendor = () => {
-  return async (dispatch, getState) => {
-    await dispatch({ type: "ACTIVATE_LOADING" });
+  return async (dispatch, getState, timeout) => {
+    dispatch({ type: "ACTIVATE_LOADING_VENDOR" });
+    const loadingTime = 2000;
+    timeout = (ms) => {
+      return new Promise((resolve) => setTimeout(resolve, ms));
+    };
+    await timeout(loadingTime);
     const negara = getState().filter.countryID,
       kota = getState().filter.cityID,
       kategori = getState().filter.categoryID,
@@ -68,12 +73,11 @@ export const getVendor = () => {
       };
       axios({
         method: "GET",
-        url: "http://0.0.0.0:5050/vendor",
+        url: "https://127.0.0.1:5000/vendor",
         params: param,
       })
         .then(async (response) => {
           dispatch({ type: "SUCCESS_GET_VENDOR", payload: response.data });
-          console.warn("cek dari dalem getVendor", response.data);
         })
         .catch((error) => {
           console.log(error);
@@ -89,12 +93,11 @@ export const getVendor = () => {
       };
       axios({
         method: "GET",
-        url: "http://0.0.0.0:5050/vendor",
+        url: "https://127.0.0.1:5000/vendor",
         params: param,
       })
         .then(async (response) => {
           dispatch({ type: "SUCCESS_GET_VENDOR", payload: response.data });
-          console.warn("cek dari dalem getVendor", response.data);
         })
         .catch((error) => {
           console.log(error);
@@ -109,12 +112,11 @@ export const getVendor = () => {
       };
       axios({
         method: "GET",
-        url: "http://0.0.0.0:5050/vendor",
+        url: "https://127.0.0.1:5000/vendor",
         params: param,
       })
         .then(async (response) => {
           dispatch({ type: "SUCCESS_GET_VENDOR", payload: response.data });
-          console.warn("cek dari dalem getVendor", response.data);
         })
         .catch((error) => {
           console.log(error);
@@ -129,12 +131,11 @@ export const getVendor = () => {
       };
       axios({
         method: "GET",
-        url: "http://0.0.0.0:5050/vendor",
+        url: "https://127.0.0.1:5000/vendor",
         params: param,
       })
         .then(async (response) => {
           dispatch({ type: "SUCCESS_GET_VENDOR", payload: response.data });
-          console.warn("cek dari dalem getVendor", response.data);
         })
         .catch((error) => {
           console.log(error);
@@ -150,12 +151,11 @@ export const getVendor = () => {
       };
       axios({
         method: "GET",
-        url: "http://0.0.0.0:5050/vendor",
+        url: "https://127.0.0.1:5000/vendor",
         params: param,
       })
         .then(async (response) => {
           dispatch({ type: "SUCCESS_GET_VENDOR", payload: response.data });
-          console.warn("cek dari dalem getVendor", response.data);
         })
         .catch((error) => {
           console.log(error);
@@ -172,12 +172,11 @@ export const getVendor = () => {
       };
       axios({
         method: "GET",
-        url: "http://0.0.0.0:5050/vendor",
+        url: "https://127.0.0.1:5000/vendor",
         params: param,
       })
         .then(async (response) => {
           dispatch({ type: "SUCCESS_GET_VENDOR", payload: response.data });
-          console.warn("cek dari dalem getVendor", response.data);
         })
         .catch((error) => {
           console.log(error);
@@ -195,12 +194,11 @@ export const getVendor = () => {
       };
       axios({
         method: "GET",
-        url: "http://0.0.0.0:5050/vendor",
+        url: "https://127.0.0.1:5000/vendor",
         params: param,
       })
         .then(async (response) => {
           dispatch({ type: "SUCCESS_GET_VENDOR", payload: response.data });
-          console.warn("cek dari dalem getVendor", response.data);
         })
         .catch((error) => {
           console.log(error);
@@ -217,12 +215,11 @@ export const getVendor = () => {
       };
       axios({
         method: "GET",
-        url: "http://0.0.0.0:5050/vendor",
+        url: "https://127.0.0.1:5000/vendor",
         params: param,
       })
         .then(async (response) => {
           dispatch({ type: "SUCCESS_GET_VENDOR", payload: response.data });
-          console.warn("cek dari dalem getVendor", response.data);
         })
         .catch((error) => {
           console.log(error);
@@ -240,12 +237,11 @@ export const getVendor = () => {
       };
       axios({
         method: "GET",
-        url: "http://0.0.0.0:5050/vendor",
+        url: "https://127.0.0.1:5000/vendor",
         params: param,
       })
         .then(async (response) => {
           dispatch({ type: "SUCCESS_GET_VENDOR", payload: response.data });
-          console.warn("cek dari dalem getVendor", response.data);
         })
         .catch((error) => {
           console.log(error);
@@ -262,12 +258,11 @@ export const getVendor = () => {
       };
       axios({
         method: "GET",
-        url: "http://0.0.0.0:5050/vendor",
+        url: "https://127.0.0.1:5000/vendor",
         params: param,
       })
         .then(async (response) => {
           dispatch({ type: "SUCCESS_GET_VENDOR", payload: response.data });
-          console.warn("cek dari dalem getVendor", response.data);
         })
         .catch((error) => {
           console.log(error);
@@ -284,12 +279,11 @@ export const getVendor = () => {
       };
       axios({
         method: "GET",
-        url: "http://0.0.0.0:5050/vendor",
+        url: "https://127.0.0.1:5000/vendor",
         params: param,
       })
         .then(async (response) => {
           dispatch({ type: "SUCCESS_GET_VENDOR", payload: response.data });
-          console.warn("cek dari dalem getVendor", response.data);
         })
         .catch((error) => {
           console.log(error);
@@ -301,11 +295,10 @@ export const getVendor = () => {
     ) {
       axios({
         method: "GET",
-        url: "http://0.0.0.0:5050/vendor",
+        url: "https://127.0.0.1:5000/vendor",
       })
         .then(async (response) => {
           dispatch({ type: "SUCCESS_GET_VENDOR", payload: response.data });
-          console.warn("cek dari dalem getVendor", response.data);
         })
         .catch((error) => {
           console.log(error);
@@ -313,7 +306,76 @@ export const getVendor = () => {
     }
   };
 };
-
+export const getVendorBspay = () => {
+  return async (dispatch, timeout) => {
+    dispatch({ type: "ACTIVATE_LOADING_VENDOR" });
+    const loadingTime = 2000;
+    timeout = (ms) => {
+      return new Promise((resolve) => setTimeout(resolve, ms));
+    };
+    await timeout(loadingTime);
+    axios({
+      method: "GET",
+      url: "https://127.0.0.1:5000/vendor",
+      params: {
+        bridestory_pay: true,
+      },
+    })
+      .then(async (response) => {
+        dispatch({ type: "SUCCESS_GET_VENDOR", payload: response.data });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+};
+export const getVendorFlexi = () => {
+  return async (dispatch, timeout) => {
+    dispatch({ type: "ACTIVATE_LOADING_VENDOR" });
+    const loadingTime = 2000;
+    timeout = (ms) => {
+      return new Promise((resolve) => setTimeout(resolve, ms));
+    };
+    await timeout(loadingTime);
+    axios({
+      method: "GET",
+      url: "https://127.0.0.1:5000/vendor",
+      params: {
+        country_id: 2,
+      },
+    })
+      .then(async (response) => {
+        dispatch({ type: "SUCCESS_GET_VENDOR", payload: response.data });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+};
+export const getVendorBspayFlexi = () => {
+  return async (dispatch, timeout) => {
+    dispatch({ type: "ACTIVATE_LOADING_VENDOR" });
+    const loadingTime = 2000;
+    timeout = (ms) => {
+      return new Promise((resolve) => setTimeout(resolve, ms));
+    };
+    await timeout(loadingTime);
+    axios({
+      method: "GET",
+      url: "https://127.0.0.1:5000/vendor",
+      params: {
+        country_id: 2,
+        bridestory_pay: true,
+      },
+    })
+      .then(async (response) => {
+        dispatch({ type: "SUCCESS_GET_VENDOR", payload: response.data });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+};
 export const changeInputFilterKota = (e) => {
   return {
     type: "CHANGE_INPUT_FILTER_KOTA",

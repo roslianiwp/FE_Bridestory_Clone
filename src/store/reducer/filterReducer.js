@@ -1,5 +1,5 @@
 const initialState = {
-  isLoading: false,
+  isLoadingVendor: false,
   dataKategori: [],
   dataKota: [],
   dataNegara: [],
@@ -32,10 +32,10 @@ export default function filterReducer(filterState = initialState, action) {
         ...filterState,
         budget: action.payload,
       };
-    case "ACTIVATE_LOADING":
+    case "ACTIVATE_LOADING_VENDOR":
       return {
         ...filterState,
-        isLoading: true,
+        isLoadingVendor: true,
       };
     case "SUCCESS_GET_CATEGORY":
       return {
@@ -56,6 +56,7 @@ export default function filterReducer(filterState = initialState, action) {
       return {
         ...filterState,
         dataVendor: action.payload,
+        isLoadingVendor: false,
       };
     default:
       return filterState;

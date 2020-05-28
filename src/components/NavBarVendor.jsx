@@ -13,22 +13,32 @@ import {
   MDBDropdownItem,
   MDBRow,
 } from "mdbreact";
+import { Link } from "react-router-dom";
 import "../css/Vendors.css";
 
 const NavBarVendor = (props, postSignout) => {
   postSignout = () => {
+    // if (props.isLoginFB){
+    //   FB.logout(function(response) {
+    //     // user is now logged out
+    //   });
+    // } else{
+
     props.doSignOut();
+    // }
     props.history.push("/");
   };
   return (
     <Fragment>
       {/* START NAVBAR PERTAMA */}
       <MDBNavbar expand="md" className="navhaldua">
-        <img
-          src="https://london.bridestory.com/image/upload/dpr_1.0,f_webp,fl_progressive,q_80,c_fill,g_faces/v1/assets/bs_logo_dark-rJ2hfwQqQ.webp"
-          alt="logo"
-          id="logoheaderku"
-        ></img>
+        <Link to="/">
+          <img
+            src="https://london.bridestory.com/image/upload/dpr_1.0,f_webp,fl_progressive,q_80,c_fill,g_faces/v1/assets/bs_logo_dark-rJ2hfwQqQ.webp"
+            alt="logo"
+            id="logoheaderku"
+          ></img>
+        </Link>
         <MDBFormInline>
           <div className="panjang">
             <span className="imgs-menu imgs-menu--search magnifier-icon"></span>
@@ -185,7 +195,7 @@ const NavBarVendor = (props, postSignout) => {
       {/* START NAVBAR KEDUA */}
       <MDBNavbar expand="md" className="navhaldua">
         <MDBRow class="d-flex justify-content-center text-center">
-          <MDBNavLink to="#!" className="navbarhaldua-kedua">
+          <MDBNavLink to="/" className="navbarhaldua-kedua">
             Home
           </MDBNavLink>
           <MDBNavLink to="#!" className="navbarhaldua-kedua">
@@ -195,7 +205,7 @@ const NavBarVendor = (props, postSignout) => {
           <MDBNavLink to="#!" className="navbarhaldua-kedua">
             Inspirations
           </MDBNavLink>
-          <MDBNavLink to="#!" className="navbarhaldua-kedua">
+          <MDBNavLink to="/vendors" className="navbarhaldua-kedua">
             Vendors
           </MDBNavLink>
           <MDBNavLink to="#!" className="navbarhaldua-kedua">

@@ -1,5 +1,4 @@
 import React, { Fragment } from "react";
-// import { MDBRow } from "mdbreact";
 import Carousel from "react-multi-carousel";
 import "../css/Carousel.css";
 
