@@ -58,6 +58,16 @@ export default function filterReducer(filterState = initialState, action) {
         dataVendor: action.payload,
         isLoadingVendor: false,
       };
+    case "SUCCESS_GET_VENDOR_BSPAYFLEXI":
+      return {
+        ...filterState,
+        dataVendor: action.payload,
+        isLoadingVendor: false,
+        categoryID: 0,
+        cityID: 0,
+        countryID: 0,
+        budget: 0,
+      };
     default:
       return filterState;
   }

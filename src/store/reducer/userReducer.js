@@ -6,10 +6,11 @@ const initialState = {
   is_signup: false,
   emailPengguna: "",
   kataKunci: "",
-  firstName: "",
-  lastName: "",
+  name: "",
+  foto: "",
   isLoading: false,
   isLoginFB: false,
+  isLoginGoogle: false,
   data: [],
 };
 
@@ -25,11 +26,17 @@ export default function userReducer(userState = initialState, action) {
         ...userState,
         isLoading: true,
       };
+    case "DEACTIVATE_LOADING":
+      return {
+        ...userState,
+        isLoading: false,
+      };
     case "SUCCESS_LOGIN":
       return {
         ...userState,
         token: action.payload.token,
         data: action.payload,
+        name: action.payload.firstName + action.payload.lastName,
         is_login: true,
         isLoading: false,
       };
@@ -48,11 +55,39 @@ export default function userReducer(userState = initialState, action) {
       return {
         ...userState,
         is_signup: false,
+        isLoading: false,
       };
     case "SUCCESS_LOGIN_FB":
       return {
         ...userState,
         isLoginFB: true,
+        is_login: true,
+        isLoading: false,
+        name: action.payload.name,
+        foto: action.payload.picture.data.url,
+      };
+    case "SUCCESS_LOGOUT_FB":
+      return {
+        ...userState,
+        isLoginFB: false,
+        is_logout: false,
+        isLoading: false,
+      };
+    case "SUCCESS_LOGIN_GOOGLE":
+      return {
+        ...userState,
+        isLoginGoogle: true,
+        is_login: true,
+        isLoading: false,
+        name: action.payload.profileObj.name,
+        foto: action.payload.profileObj.imageUrl,
+      };
+    case "SUCCESS_LOGOUT_GOOGLE":
+      return {
+        ...userState,
+        isLoginGoogle: false,
+        is_logout: false,
+        isLoading: false,
       };
     default:
       return userState;

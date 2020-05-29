@@ -12,17 +12,23 @@ export const doLogin = () => {
       },
     })
       .then(async (response) => {
-        console.warn("cek dari dalem login action", response);
         if (response.data.hasOwnProperty("token")) {
           dispatch({ type: "SUCCESS_LOGIN", payload: response.data });
           localStorage.setItem("token", response.data.token);
           localStorage.setItem("is_login", true);
         }
       })
-      .catch(async (error) => {
-        console.log(error);
-        await dispatch(doSignUp);
-        dispatch({ type: "MAU_SIGNUP" });
+      .catch(async (response) => {
+        // kondisi kalau salah password
+        if (response == "Error: Request failed with status code 403") {
+          alert("password anda salah!");
+          dispatch({ type: "DEACTIVATE_LOADING" });
+        }
+        // kondisi kalau belum terdaftar
+        else if (response == "Error: Request failed with status code 404") {
+          await dispatch(doSignUp);
+          dispatch({ type: "MAU_SIGNUP" });
+        }
       });
   };
 };
@@ -49,6 +55,7 @@ export const doSignUp = () => {
       })
       .catch(function (error) {
         console.log(error);
+        dispatch({ type: "DEACTIVATE_LOADING" });
       });
   };
 };
@@ -68,8 +75,60 @@ export const doSignOut = () => {
   };
 };
 
-export const logInFB = () => {
+export const logInFB = (response) => {
+  return async (dispatch) => {
+    await dispatch({ type: "ACTIVATE_LOADING" });
+    if (response.hasOwnProperty("accessToken")) {
+      localStorage.setItem("token", response.accessToken);
+      localStorage.setItem("nama", response.name);
+      localStorage.setItem("foto", response.picture.data.url);
+      localStorage.setItem("is_login", true);
+      localStorage.setItem("isLoginFB", true);
+      dispatch({
+        type: "SUCCESS_LOGIN_FB",
+        payload: response,
+      });
+    } else {
+      await dispatch({ type: "DEACTIVATE_LOADING" });
+      alert("anda belum berhasil login");
+    }
+  };
+};
+export const logOutFB = () => {
+  localStorage.removeItem("token");
+  localStorage.removeItem("is_login");
+  localStorage.removeItem("isLoginFB");
+
   return {
-    type: "SUCCESS_LOGIN_FB",
+    type: "SUCCESS_LOGOUT_FB",
+  };
+};
+
+export const logInGoogle = (response) => {
+  return async (dispatch) => {
+    await dispatch({ type: "ACTIVATE_LOADING" });
+    if (response.hasOwnProperty("accessToken")) {
+      localStorage.setItem("token", response.accessToken);
+      localStorage.setItem("is_login", true);
+      localStorage.setItem("isLoginGoogle", true);
+      localStorage.setItem("nama", response.profileObj.name);
+      localStorage.setItem("foto", response.profileObj.imageUrl);
+      dispatch({
+        type: "SUCCESS_LOGIN_GOOGLE",
+        payload: response,
+      });
+    } else {
+      await dispatch({ type: "DEACTIVATE_LOADING" });
+      alert("anda belum berhasil login");
+    }
+  };
+};
+
+export const logOutGoogle = () => {
+  localStorage.removeItem("token");
+  localStorage.removeItem("is_login");
+  localStorage.removeItem("isLoginGoogle");
+  return {
+    type: "SUCCESS_LOGOUT_GOOGLE",
   };
 };

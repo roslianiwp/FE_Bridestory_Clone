@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import { GoogleLogout } from "react-google-login";
 import {
   MDBNavbar,
   MDBNavbarNav,
@@ -17,17 +18,22 @@ import { Link } from "react-router-dom";
 import "../css/Vendors.css";
 
 const NavBarVendor = (props, postSignout) => {
-  postSignout = () => {
-    // if (props.isLoginFB){
-    //   FB.logout(function(response) {
-    //     // user is now logged out
-    //   });
-    // } else{
-
-    props.doSignOut();
-    // }
-    props.history.push("/");
+  postSignout = async () => {
+    if (props.isLoginFB) {
+      window.FB.logout(function (response) {
+        props.logOutFB();
+        props.history.push("/");
+      });
+    } else if (props.isLoginGoogle) {
+      await props.logOutGoogle();
+      props.history.push("/");
+    } else {
+      props.doSignOut();
+      props.history.push("/");
+    }
   };
+  const nama = localStorage.getItem("nama");
+  const foto = localStorage.getItem("foto");
   return (
     <Fragment>
       {/* START NAVBAR PERTAMA */}
@@ -67,21 +73,29 @@ const NavBarVendor = (props, postSignout) => {
                   style={{ color: "black" }}
                 >
                   <span className="mr-2">
-                    <img
-                      src="https://london.bridestory.com/image/upload/c_fill,d_profile-dash-default_t6ouok.gif,dpr_1.0,f_auto,fl_progressive,h_25,pg_1,q_80,w_25/v1/assets/profile-dash-default_t6ouok.gif"
-                      alt="avatar"
-                    ></img>
-                    Nama
+                    {foto ? (
+                      <img src={foto} alt="avatar" id="foto-profile"></img>
+                    ) : (
+                      <img
+                        src="https://london.bridestory.com/image/upload/c_fill,d_profile-dash-default_t6ouok.gif,dpr_1.0,f_auto,fl_progressive,h_25,pg_1,q_80,w_25/v1/assets/profile-dash-default_t6ouok.gif"
+                        alt="avatar"
+                      ></img>
+                    )}
+                    {nama.slice(0, 8)}
                   </span>
                 </MDBDropdownToggle>
                 <MDBDropdownMenu>
                   <MDBDropdownItem href="#!" className="avatar-dropdown">
                     <span className="mr-2">
-                      <img
-                        src="https://london.bridestory.com/image/upload/c_fill,d_profile-dash-default_t6ouok.gif,dpr_1.0,f_auto,fl_progressive,h_25,pg_1,q_80,w_25/v1/assets/profile-dash-default_t6ouok.gif"
-                        alt="avatar"
-                      ></img>
-                      Nama
+                      {foto ? (
+                        <img src={foto} alt="avatar" id="foto-profile"></img>
+                      ) : (
+                        <img
+                          src="https://london.bridestory.com/image/upload/c_fill,d_profile-dash-default_t6ouok.gif,dpr_1.0,f_auto,fl_progressive,h_25,pg_1,q_80,w_25/v1/assets/profile-dash-default_t6ouok.gif"
+                          alt="avatar"
+                        ></img>
+                      )}
+                      {nama}
                     </span>
                   </MDBDropdownItem>
                   <MDBDropdownItem divider />
@@ -117,10 +131,26 @@ const NavBarVendor = (props, postSignout) => {
                     <span className="imgs-menu imgs-menu--setting dd"></span>
                     Pengaturan User
                   </MDBDropdownItem>
-                  <MDBDropdownItem href="#!" onClick={() => postSignout()}>
-                    <span className="imgs-menu imgs-menu--logout dd"></span>
-                    Keluar
-                  </MDBDropdownItem>
+                  {props.isLoginGoogle ? (
+                    <MDBDropdownItem href="#!">
+                      <GoogleLogout
+                        clientId="7968812398-dcf8ckgcjm1j1np8anjc0nudno4q5ons.apps.googleusercontent.com"
+                        render={() => (
+                          <div onClick={() => postSignout()}>
+                            <span className="imgs-menu imgs-menu--logout dd"></span>
+                            Keluar
+                          </div>
+                        )}
+                        buttonText="Logout"
+                        onLogoutSuccess={props.logOutGoogle}
+                      ></GoogleLogout>
+                    </MDBDropdownItem>
+                  ) : (
+                    <MDBDropdownItem href="#!" onClick={() => postSignout()}>
+                      <span className="imgs-menu imgs-menu--logout dd"></span>
+                      Keluar
+                    </MDBDropdownItem>
+                  )}
                 </MDBDropdownMenu>
               </MDBDropdown>
             </MDBNavItem>

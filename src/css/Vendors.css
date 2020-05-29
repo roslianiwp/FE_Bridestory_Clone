@@ -343,3 +343,9 @@
   background-color: hotpink;
   background: url("https://www.bridestory.com/images/loadersmall.gif");
 } */
+#foto-profile {
+  width: 25px;
+  height: 25px;
+  padding: 0px;
+  margin-right: 4px;
+}

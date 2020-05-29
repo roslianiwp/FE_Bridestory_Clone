@@ -322,7 +322,10 @@ export const getVendorBspay = () => {
       },
     })
       .then(async (response) => {
-        dispatch({ type: "SUCCESS_GET_VENDOR", payload: response.data });
+        dispatch({
+          type: "SUCCESS_GET_VENDOR_BSPAYFLEXI",
+          payload: response.data,
+        });
       })
       .catch((error) => {
         console.log(error);
@@ -345,7 +348,10 @@ export const getVendorFlexi = () => {
       },
     })
       .then(async (response) => {
-        dispatch({ type: "SUCCESS_GET_VENDOR", payload: response.data });
+        dispatch({
+          type: "SUCCESS_GET_VENDOR_BSPAYFLEXI",
+          payload: response.data,
+        });
       })
       .catch((error) => {
         console.log(error);
@@ -369,7 +375,10 @@ export const getVendorBspayFlexi = () => {
       },
     })
       .then(async (response) => {
-        dispatch({ type: "SUCCESS_GET_VENDOR", payload: response.data });
+        dispatch({
+          type: "SUCCESS_GET_VENDOR_BSPAYFLEXI",
+          payload: response.data,
+        });
       })
       .catch((error) => {
         console.log(error);

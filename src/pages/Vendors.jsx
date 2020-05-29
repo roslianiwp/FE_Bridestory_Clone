@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
-import { doSignOut } from "../store/action/userAction";
+import { Redirect } from "react-router-dom";
+import { doSignOut, logOutFB, logOutGoogle } from "../store/action/userAction";
 import {
   getKategori,
   getNegara,
@@ -96,73 +97,82 @@ class Vendors extends React.Component {
   };
 
   render() {
-    return (
-      <Fragment>
-        {/* NAVBAR PERTAMA DAN KEDUA */}
-        <NavBarVendor
-          toggle={() => this.toggleCollapse()}
-          isOpen={this.state.isOpen}
-          {...this.props}
+    const login = localStorage.getItem("is_login");
+    if (login === false) {
+      // alert("anda belum login!");
+      return (
+        <Redirect
+          to={{
+            pathname: "/",
+          }}
         />
-        {/* NAVBAR DROPDOWN dan BREADCRUMBS*/}
-        <MDBRow
-          className="dd-filter d-flex justify-content-center"
-          style={{ marginRight: "0px" }}
-        >
-          {/* FILTER-FILTER */}
-          <FilterKategori
-            dataKategori={this.props.dataKategori}
-            changeInputFilterKategori={this.props.changeInputFilterKategori}
+      );
+    } else {
+      return (
+        <Fragment>
+          {/* NAVBAR PERTAMA DAN KEDUA */}
+          <NavBarVendor
+            toggle={() => this.toggleCollapse()}
+            isOpen={this.state.isOpen}
+            {...this.props}
           />
-          <FilterNegara
-            dataNegara={this.props.dataNegara}
-            changeInputFilterNegara={this.props.changeInputFilterNegara}
-            getKota={this.props.getKota}
-          />
-          <FilterKota
-            dataKota={this.props.dataKota}
-            changeInputFilterKota={this.props.changeInputFilterKota}
-          />
-          <FilterHarga
-            budget={this.props.budget}
-            changeInputFilterBudget={this.props.changeInputFilterBudget}
-          />
-          <MDBBtn class="cari-vendor" onClick={this.handleCariVendor}>
-            Cari Vendor
-          </MDBBtn>
-        </MDBRow>
-        <BreadCrumbs
-          checkedBspay={this.state.checkedBspay}
-          checkedFlexi={this.state.checkedFlexi}
-          handleChangeBspay={() => this.handleChangeBspay()}
-          handleChangeFlexi={() => this.handleChangeFlexi()}
-          kategori={this.props.dataKategori}
-        />
-        {/* CARD OF CONTENT */}
-        {this.props.isLoading ? (
+          {/* NAVBAR DROPDOWN dan BREADCRUMBS*/}
           <MDBRow
-            className="d-flex justify-content-center"
+            className="dd-filter d-flex justify-content-center"
             style={{ marginRight: "0px" }}
           >
-            <MDBCol md="12 d-flex justify-content-center">
-              <div>
-                <img
-                  src="https://www.bridestory.com/images/loadersmall.gif"
-                  alt="loading"
-                  style={{ marginTop: "10px", marginLeft: "-10px" }}
-                ></img>
-                {/* <img
-                  src="https://3.bp.blogspot.com/-eZG6YtZKdr4/WnLKLHHDZkI/AAAAAAAAChA/FHelaYBRPIAaj1fBNh8geGy64RTHEzRzQCLcBGAs/s1600/loader.gif"
-                  alt="loading"
-                ></img> */}
-              </div>
-            </MDBCol>
+            {/* FILTER-FILTER */}
+            <FilterKategori
+              dataKategori={this.props.dataKategori}
+              changeInputFilterKategori={this.props.changeInputFilterKategori}
+            />
+            <FilterNegara
+              dataNegara={this.props.dataNegara}
+              changeInputFilterNegara={this.props.changeInputFilterNegara}
+              getKota={this.props.getKota}
+            />
+            <FilterKota
+              dataKota={this.props.dataKota}
+              changeInputFilterKota={this.props.changeInputFilterKota}
+            />
+            <FilterHarga
+              budget={this.props.budget}
+              changeInputFilterBudget={this.props.changeInputFilterBudget}
+            />
+            <MDBBtn class="cari-vendor" onClick={this.handleCariVendor}>
+              Cari Vendor
+            </MDBBtn>
           </MDBRow>
-        ) : (
-          <Cards dataVendor={this.props.dataVendor} />
-        )}
-      </Fragment>
-    );
+          <BreadCrumbs
+            checkedBspay={this.state.checkedBspay}
+            checkedFlexi={this.state.checkedFlexi}
+            handleChangeBspay={() => this.handleChangeBspay()}
+            handleChangeFlexi={() => this.handleChangeFlexi()}
+            kategori={this.props.dataKategori}
+            {...this.props}
+          />
+          {/* CARD OF CONTENT */}
+          {this.props.isLoading ? (
+            <MDBRow
+              className="d-flex justify-content-center"
+              style={{ marginRight: "0px" }}
+            >
+              <MDBCol md="12 d-flex justify-content-center">
+                <div>
+                  <img
+                    src="https://www.bridestory.com/images/loadersmall.gif"
+                    alt="loading"
+                    style={{ marginTop: "10px", marginLeft: "-10px" }}
+                  ></img>
+                </div>
+              </MDBCol>
+            </MDBRow>
+          ) : (
+            <Cards dataVendor={this.props.dataVendor} />
+          )}
+        </Fragment>
+      );
+    }
   }
 }
 const mapStateToProps = (state) => {
@@ -172,6 +182,9 @@ const mapStateToProps = (state) => {
     login: state.user.is_login,
     loading: state.user.isLoading,
     isLoginFB: state.user.isLoginFB,
+    isLoginGoogle: state.user.isLoginGoogle,
+    nama: state.user.name,
+    foto: state.user.foto,
     dataKategori: state.filter.dataKategori,
     dataNegara: state.filter.dataNegara,
     dataKota: state.filter.dataKota,
@@ -197,5 +210,7 @@ const mapDispatchToProps = {
   getVendorBspay,
   getVendorFlexi,
   getVendorBspayFlexi,
+  logOutFB,
+  logOutGoogle,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Vendors);

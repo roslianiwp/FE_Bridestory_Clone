@@ -3,29 +3,28 @@ import { MDBRow, MDBCol } from "mdbreact";
 import "../css/Home.css";
 import SignIn from "./SignIn.jsx";
 import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
-// import FacebookLogin from "react-facebook-login";
 import { GoogleLogin } from "react-google-login";
-
-// import JoinVendor from "./JoinVendor";
 
 const KotakLogIn = (props, clickSignUp) => {
   clickSignUp = async () => {
     await props.doSignUp();
     props.history.push("/vendors");
   };
-  // state = {
-  //   name: "",
-  //   picture: "",
 
-  // };
-  const responseFacebook = (response) => {
-    console.log(response);
-    props.logInFB();
-    props.history.push("/vendors");
+  const responseFacebook = async (response) => {
+    await props.logInFB(response);
+    const is_login = localStorage.getItem("is_login");
+    if (is_login) {
+      props.history.push("/vendors");
+    }
   };
 
-  const responseGoogle = (response) => {
-    console.log(response);
+  const responseGoogle = async (response) => {
+    await props.logInGoogle(response);
+    const is_login = localStorage.getItem("is_login");
+    if (is_login) {
+      props.history.push("/vendors");
+    }
   };
 
   return (
@@ -111,7 +110,7 @@ const KotakLogIn = (props, clickSignUp) => {
                 </MDBCol>
                 <MDBCol md={6}>
                   <GoogleLogin
-                    clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
+                    clientId="7968812398-dcf8ckgcjm1j1np8anjc0nudno4q5ons.apps.googleusercontent.com"
                     render={(renderProps) => (
                       <div className="kotak-kecil-login">
                         <img
@@ -133,14 +132,6 @@ const KotakLogIn = (props, clickSignUp) => {
                     onFailure={responseGoogle}
                     cookiePolicy={"single_host_origin"}
                   />
-                  {/* <div className="kotak-kecil-login">
-                    <img
-                      src="https://alexandra.bridestory.com/image/upload/assets/google-logo2x-rkgZVmis7.png"
-                      alt="google"
-                      className="fb-google"
-                    ></img>
-                    <span className="logo-login">Google</span>
-                  </div> */}
                 </MDBCol>
               </MDBRow>
               <MDBRow style={{ marginTop: "10px" }}>

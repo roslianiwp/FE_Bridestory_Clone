@@ -5,6 +5,7 @@ import {
   changeInputUser,
   doSignUp,
   logInFB,
+  logInGoogle,
 } from "../store/action/userAction";
 import Typist from "react-typist";
 import { MDBJumbotron, MDBContainer, MDBRow, MDBCol, MDBModal } from "mdbreact";
@@ -98,14 +99,14 @@ class Home extends React.Component {
                   </button>
                 </MDBCol>
                 {/* KOTAK LOGIN */}
-                <KotakLogIn {...this.props} />
+                <KotakLogIn {...this.props} login={this.props.login} />
               </MDBRow>
               <JoinVendor />
             </MDBContainer>
           </MDBJumbotron>
           {/* NAVIGATIONBAR */}
 
-          <NavBar />
+          <NavBar {...this.props} />
           <CarouselHome />
           <Footer />
         </div>
@@ -133,6 +134,7 @@ const mapDispatchToProps = {
   doLogin,
   doSignUp,
   logInFB,
+  logInGoogle,
   // patchSignUp,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
