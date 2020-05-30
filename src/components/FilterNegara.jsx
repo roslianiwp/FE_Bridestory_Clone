@@ -10,7 +10,7 @@ const FilterNegara = (props, onChangeHandler) => {
   return (
     <Fragment>
       <select className=" dd-filter buton-dd-filter" onChange={onChangeHandler}>
-        <option>Semua Negara</option>
+        <option value="0">Semua Negara</option>
         {props.dataNegara.map((el) => (
           <option name="countryID" value={el.id}>
             {el.name}

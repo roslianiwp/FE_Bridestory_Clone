@@ -9,7 +9,7 @@ const FilterKategori = (props, onChangeHandler) => {
   return (
     <Fragment>
       <select className="dd-filter buton-dd-filter" onChange={onChangeHandler}>
-        <option>Semua Harga</option>
+        <option value="0">Semua Harga</option>
         <option name="budget" value="1">
           $
         </option>

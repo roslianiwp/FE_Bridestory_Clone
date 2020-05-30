@@ -9,7 +9,7 @@ const FilterKategori = (props, onChangeHandler) => {
   return (
     <Fragment>
       <select className="dd-filter buton-dd-filter" onChange={onChangeHandler}>
-        <option>Semua Kategori</option>
+        <option value="0">Semua Kategori</option>
         {props.dataKategori.map((el, index) => (
           <option name="categoryID" value={el.id}>
             {el.name.charAt(0).toUpperCase() + el.name.slice(1)}

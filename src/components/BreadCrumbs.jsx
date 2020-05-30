@@ -33,7 +33,7 @@ const BreadCrumbs = (props) => {
     nama = "Jewelry";
   }
 
-  if (props.cityID === 0 || props.cityID === "Semua Kategori") {
+  if (props.cityID === 0 || props.cityID === "Semua Kota") {
     kota = "Semua Kota";
   } else if (props.cityID === "1") {
     kota = "Surabaya";
@@ -65,7 +65,7 @@ const BreadCrumbs = (props) => {
     kota = "Putrajaya";
   }
 
-  if (props.countryID === 0 || props.countryID === "Semua Kategori") {
+  if (props.countryID === 0 || props.countryID === "Semua Negara") {
     negara = "Semua Negara";
   } else if (props.countryID === "1") {
     negara = "Malaysia";

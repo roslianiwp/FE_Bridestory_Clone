@@ -9,7 +9,7 @@ const FilterKota = (props, onChangeHandler) => {
   return (
     <Fragment>
       <select className="dd-filter buton-dd-filter" onChange={onChangeHandler}>
-        <option>Semua Kota</option>
+        <option value="0">Semua Kota</option>
         {props.dataKota.map((el) => (
           <option name="cityID" value={el.id}>
             {el.name}

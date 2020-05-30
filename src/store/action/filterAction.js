@@ -64,7 +64,19 @@ export const getVendor = () => {
       kategori = getState().filter.categoryID,
       budget = getState().filter.budget;
     let param;
-    if (negara != 0 && kota != 0 && budget != 0 && kategori != 0) {
+    if (negara == 0 && budget == 0 && kategori == 0 && kota == 0) {
+      axios({
+        method: "GET",
+        url: "https://127.0.0.1:5000/vendor",
+      })
+        .then(async (response) => {
+          dispatch({ type: "SUCCESS_GET_VENDOR", payload: response.data });
+          console.log("masuk ke1");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else if (negara != 0 && kota != 0 && budget != 0 && kategori != 0) {
       param = {
         country_id: getState().filter.countryID,
         city_id: getState().filter.cityID,
@@ -78,15 +90,12 @@ export const getVendor = () => {
       })
         .then(async (response) => {
           dispatch({ type: "SUCCESS_GET_VENDOR", payload: response.data });
+          console.log("masuk ke2");
         })
         .catch((error) => {
           console.log(error);
         });
-    } else if (
-      (negara == 0 || negara == "Semua Negara") &&
-      budget != 0 &&
-      kategori != 0
-    ) {
+    } else if (negara == 0 && budget != 0 && kategori != 0) {
       param = {
         category_id: getState().filter.categoryID,
         budget: getState().filter.budget,
@@ -98,15 +107,12 @@ export const getVendor = () => {
       })
         .then(async (response) => {
           dispatch({ type: "SUCCESS_GET_VENDOR", payload: response.data });
+          console.log("masuk ke3");
         })
         .catch((error) => {
           console.log(error);
         });
-    } else if (
-      (negara == 0 || negara == "Semua Negara") &&
-      budget != 0 &&
-      (kategori == 0 || kategori == "Semua Kategori")
-    ) {
+    } else if (negara == 0 && budget != 0 && kategori == 0) {
       param = {
         budget: getState().filter.budget,
       };
@@ -117,15 +123,12 @@ export const getVendor = () => {
       })
         .then(async (response) => {
           dispatch({ type: "SUCCESS_GET_VENDOR", payload: response.data });
+          console.log("masuk ke4");
         })
         .catch((error) => {
           console.log(error);
         });
-    } else if (
-      (negara == 0 || negara == "Semua Negara") &&
-      (budget == 0 || budget == "Semua Budget") &&
-      kategori != 0
-    ) {
+    } else if (negara == 0 && budget == 0 && kategori != 0) {
       param = {
         category_id: getState().filter.categoryID,
       };
@@ -136,16 +139,12 @@ export const getVendor = () => {
       })
         .then(async (response) => {
           dispatch({ type: "SUCCESS_GET_VENDOR", payload: response.data });
+          console.log("masuk ke5");
         })
         .catch((error) => {
           console.log(error);
         });
-    } else if (
-      negara != 0 &&
-      (kota == 0 || kota == "Semua Kota") &&
-      (budget == 0 || budget == "Semua Budget") &&
-      (kategori == 0 || kategori == "Semua Kategori")
-    ) {
+    } else if (negara != 0 && kota == 0 && budget == 0 && kategori == 0) {
       param = {
         country_id: getState().filter.countryID,
       };
@@ -156,16 +155,12 @@ export const getVendor = () => {
       })
         .then(async (response) => {
           dispatch({ type: "SUCCESS_GET_VENDOR", payload: response.data });
+          console.log("masuk ke6");
         })
         .catch((error) => {
           console.log(error);
         });
-    } else if (
-      negara != 0 &&
-      kota != 0 &&
-      (budget == 0 || budget == "Semua Budget") &&
-      (kategori == 0 || kategori == "Semua Kategori")
-    ) {
+    } else if (negara != 0 && kota != 0 && budget == 0 && kategori == 0) {
       param = {
         country_id: getState().filter.countryID,
         city_id: getState().filter.cityID,
@@ -177,16 +172,12 @@ export const getVendor = () => {
       })
         .then(async (response) => {
           dispatch({ type: "SUCCESS_GET_VENDOR", payload: response.data });
+          console.log("masuk ke7");
         })
         .catch((error) => {
           console.log(error);
         });
-    } else if (
-      negara != 0 &&
-      kota != 0 &&
-      (budget == 0 || budget == "Semua Budget") &&
-      kategori != 0
-    ) {
+    } else if (negara != 0 && kota != 0 && budget == 0 && kategori != 0) {
       param = {
         country_id: getState().filter.countryID,
         city_id: getState().filter.cityID,
@@ -199,16 +190,12 @@ export const getVendor = () => {
       })
         .then(async (response) => {
           dispatch({ type: "SUCCESS_GET_VENDOR", payload: response.data });
+          console.log("masuk ke8");
         })
         .catch((error) => {
           console.log(error);
         });
-    } else if (
-      negara != 0 &&
-      (kota == 0 || kota == "Semua Kota") &&
-      (budget == 0 || budget == "Semua Budget") &&
-      kategori != 0
-    ) {
+    } else if (negara != 0 && kota == 0 && budget == 0 && kategori != 0) {
       param = {
         country_id: getState().filter.countryID,
         category_id: getState().filter.categoryID,
@@ -220,16 +207,12 @@ export const getVendor = () => {
       })
         .then(async (response) => {
           dispatch({ type: "SUCCESS_GET_VENDOR", payload: response.data });
+          console.log("masuk ke9");
         })
         .catch((error) => {
           console.log(error);
         });
-    } else if (
-      negara != 0 &&
-      kota != 0 &&
-      budget != 0 &&
-      (kategori == 0 || kategori == "Semua Kategori")
-    ) {
+    } else if (negara != 0 && kota != 0 && budget != 0 && kategori == 0) {
       param = {
         country_id: getState().filter.countryID,
         city_id: getState().filter.cityID,
@@ -242,16 +225,12 @@ export const getVendor = () => {
       })
         .then(async (response) => {
           dispatch({ type: "SUCCESS_GET_VENDOR", payload: response.data });
+          console.log("masuk ke10");
         })
         .catch((error) => {
           console.log(error);
         });
-    } else if (
-      negara != 0 &&
-      (kota == 0 || kota == "Semua Kota") &&
-      budget != 0 &&
-      (kategori == 0 || kategori == "Semua Kategori")
-    ) {
+    } else if (negara != 0 && kota == 0 && budget != 0 && kategori == 0) {
       param = {
         country_id: getState().filter.countryID,
         budget: getState().filter.budget,
@@ -263,16 +242,12 @@ export const getVendor = () => {
       })
         .then(async (response) => {
           dispatch({ type: "SUCCESS_GET_VENDOR", payload: response.data });
+          console.log("masuk ke11");
         })
         .catch((error) => {
           console.log(error);
         });
-    } else if (
-      negara != 0 &&
-      kota != 0 &&
-      (budget == 0 || budget == "Semua Budget") &&
-      (kategori == 0 || kategori == "Semua Kategori")
-    ) {
+    } else if (negara != 0 && kota != 0 && budget == 0 && kategori == 0) {
       param = {
         country_id: getState().filter.countryID,
         city_id: getState().filter.cityID,
@@ -284,21 +259,7 @@ export const getVendor = () => {
       })
         .then(async (response) => {
           dispatch({ type: "SUCCESS_GET_VENDOR", payload: response.data });
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    } else if (
-      (negara == "Semua Negara" || negara == 0) &&
-      (budget == "Semua Harga" || budget == 0) &&
-      (kategori == "Semua Kategori" || kategori == 0)
-    ) {
-      axios({
-        method: "GET",
-        url: "https://127.0.0.1:5000/vendor",
-      })
-        .then(async (response) => {
-          dispatch({ type: "SUCCESS_GET_VENDOR", payload: response.data });
+          console.log("masuk ke12");
         })
         .catch((error) => {
           console.log(error);
