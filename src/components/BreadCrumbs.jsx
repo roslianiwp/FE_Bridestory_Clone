@@ -116,7 +116,7 @@ const BreadCrumbs = (props) => {
         <div className="switch-bp-vendor d-flex justify-content-center">
           Hanya menampilkan Bridestory Pay Vendor
           <Switch
-            onChange={props.handleChangeBspay}
+            onChange={() => props.handleChangeBspay()}
             checked={props.checkedBspay}
             className="react-switch"
             onColor="#eba1a1"
@@ -127,7 +127,7 @@ const BreadCrumbs = (props) => {
         <div className="switch-bp-vendor d-flex justify-content-center">
           Hanya menampilkan vendor Flexi Reschedule
           <Switch
-            onChange={props.handleChangeFlexi}
+            onChange={() => props.handleChangeFlexi()}
             checked={props.checkedFlexi}
             className="react-switch"
             onColor="#eba1a1"

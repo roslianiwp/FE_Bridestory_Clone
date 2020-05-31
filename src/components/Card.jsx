@@ -73,7 +73,7 @@ const Cards = (props) => {
                   ) : (
                     false
                   )}
-                  {el.city_id.country_id.name === "Indonesia" ? (
+                  {el.flexi_schedule ? (
                     <img
                       className="flexi-badge"
                       src="https://alexandra.bridestory.com/image/upload/assets/badge_desktop-1-HkCI5OT_8.png"

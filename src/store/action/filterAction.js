@@ -267,83 +267,836 @@ export const getVendor = () => {
     }
   };
 };
+
 export const getVendorBspay = () => {
-  return async (dispatch, timeout) => {
+  return async (dispatch, getState, timeout) => {
     dispatch({ type: "ACTIVATE_LOADING_VENDOR" });
     const loadingTime = 2000;
     timeout = (ms) => {
       return new Promise((resolve) => setTimeout(resolve, ms));
     };
     await timeout(loadingTime);
-    axios({
-      method: "GET",
-      url: "https://127.0.0.1:5000/vendor",
-      params: {
+    const negara = getState().filter.countryID,
+      kota = getState().filter.cityID,
+      kategori = getState().filter.categoryID,
+      budget = getState().filter.budget;
+    let param;
+    if (negara == 0 && budget == 0 && kategori == 0 && kota == 0) {
+      param = {
         bridestory_pay: true,
-      },
-    })
-      .then(async (response) => {
-        dispatch({
-          type: "SUCCESS_GET_VENDOR_BSPAYFLEXI",
-          payload: response.data,
-        });
+      };
+      axios({
+        method: "GET",
+        url: "https://127.0.0.1:5000/vendor",
+        params: param,
       })
-      .catch((error) => {
-        console.log(error);
-      });
+        .then(async (response) => {
+          dispatch({
+            type: "SUCCESS_GET_VENDOR_BSPAYFLEXI",
+            payload: response.data,
+          });
+          console.log("masuk ke1 bspay");
+          console.log(param);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else if (negara != 0 && kota != 0 && budget != 0 && kategori != 0) {
+      param = {
+        country_id: getState().filter.countryID,
+        city_id: getState().filter.cityID,
+        category_id: getState().filter.categoryID,
+        budget: getState().filter.budget,
+        bridestory_pay: true,
+      };
+      axios({
+        method: "GET",
+        url: "https://127.0.0.1:5000/vendor",
+        params: param,
+      })
+        .then(async (response) => {
+          dispatch({
+            type: "SUCCESS_GET_VENDOR_BSPAYFLEXI",
+            payload: response.data,
+          });
+          console.log("masuk ke2 bspay");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else if (negara == 0 && budget != 0 && kategori != 0) {
+      param = {
+        category_id: getState().filter.categoryID,
+        budget: getState().filter.budget,
+        bridestory_pay: true,
+      };
+      axios({
+        method: "GET",
+        url: "https://127.0.0.1:5000/vendor",
+        params: param,
+      })
+        .then(async (response) => {
+          dispatch({
+            type: "SUCCESS_GET_VENDOR_BSPAYFLEXI",
+            payload: response.data,
+          });
+          console.log("masuk ke3 bspay");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else if (negara == 0 && budget != 0 && kategori == 0) {
+      param = {
+        budget: getState().filter.budget,
+        bridestory_pay: true,
+      };
+      axios({
+        method: "GET",
+        url: "https://127.0.0.1:5000/vendor",
+        params: param,
+      })
+        .then(async (response) => {
+          dispatch({
+            type: "SUCCESS_GET_VENDOR_BSPAYFLEXI",
+            payload: response.data,
+          });
+          console.log("masuk ke4 bspay");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else if (negara == 0 && budget == 0 && kategori != 0) {
+      param = {
+        category_id: getState().filter.categoryID,
+        bridestory_pay: true,
+      };
+      axios({
+        method: "GET",
+        url: "https://127.0.0.1:5000/vendor",
+        params: param,
+      })
+        .then(async (response) => {
+          dispatch({
+            type: "SUCCESS_GET_VENDOR_BSPAYFLEXI",
+            payload: response.data,
+          });
+          console.log("masuk ke5 bspay");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else if (negara != 0 && kota == 0 && budget == 0 && kategori == 0) {
+      param = {
+        country_id: getState().filter.countryID,
+        bridestory_pay: true,
+      };
+      axios({
+        method: "GET",
+        url: "https://127.0.0.1:5000/vendor",
+        params: param,
+      })
+        .then(async (response) => {
+          dispatch({
+            type: "SUCCESS_GET_VENDOR_BSPAYFLEXI",
+            payload: response.data,
+          });
+          console.log("masuk ke6 bspay");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else if (negara != 0 && kota != 0 && budget == 0 && kategori == 0) {
+      param = {
+        country_id: getState().filter.countryID,
+        city_id: getState().filter.cityID,
+        bridestory_pay: true,
+      };
+      axios({
+        method: "GET",
+        url: "https://127.0.0.1:5000/vendor",
+        params: param,
+      })
+        .then(async (response) => {
+          dispatch({
+            type: "SUCCESS_GET_VENDOR_BSPAYFLEXI",
+            payload: response.data,
+          });
+          console.log("masuk ke7 bspay");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else if (negara != 0 && kota != 0 && budget == 0 && kategori != 0) {
+      param = {
+        country_id: getState().filter.countryID,
+        city_id: getState().filter.cityID,
+        category_id: getState().filter.categoryID,
+        bridestory_pay: true,
+      };
+      axios({
+        method: "GET",
+        url: "https://127.0.0.1:5000/vendor",
+        params: param,
+      })
+        .then(async (response) => {
+          dispatch({
+            type: "SUCCESS_GET_VENDOR_BSPAYFLEXI",
+            payload: response.data,
+          });
+          console.log("masuk ke8 bspay");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else if (negara != 0 && kota == 0 && budget == 0 && kategori != 0) {
+      param = {
+        country_id: getState().filter.countryID,
+        category_id: getState().filter.categoryID,
+        bridestory_pay: true,
+      };
+      axios({
+        method: "GET",
+        url: "https://127.0.0.1:5000/vendor",
+        params: param,
+      })
+        .then(async (response) => {
+          dispatch({
+            type: "SUCCESS_GET_VENDOR_BSPAYFLEXI",
+            payload: response.data,
+          });
+          console.log("masuk ke9 bspay");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else if (negara != 0 && kota != 0 && budget != 0 && kategori == 0) {
+      param = {
+        country_id: getState().filter.countryID,
+        city_id: getState().filter.cityID,
+        budget: getState().filter.budget,
+        bridestory_pay: true,
+      };
+      axios({
+        method: "GET",
+        url: "https://127.0.0.1:5000/vendor",
+        params: param,
+      })
+        .then(async (response) => {
+          dispatch({
+            type: "SUCCESS_GET_VENDOR_BSPAYFLEXI",
+            payload: response.data,
+          });
+          console.log("masuk ke10 bspay");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else if (negara != 0 && kota == 0 && budget != 0 && kategori == 0) {
+      param = {
+        country_id: getState().filter.countryID,
+        budget: getState().filter.budget,
+        bridestory_pay: true,
+      };
+      axios({
+        method: "GET",
+        url: "https://127.0.0.1:5000/vendor",
+        params: param,
+      })
+        .then(async (response) => {
+          dispatch({
+            type: "SUCCESS_GET_VENDOR_BSPAYFLEXI",
+            payload: response.data,
+          });
+          console.log("masuk ke11 bspay");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else if (negara != 0 && kota != 0 && budget == 0 && kategori == 0) {
+      param = {
+        country_id: getState().filter.countryID,
+        city_id: getState().filter.cityID,
+        bridestory_pay: true,
+      };
+      axios({
+        method: "GET",
+        url: "https://127.0.0.1:5000/vendor",
+        params: param,
+      })
+        .then(async (response) => {
+          dispatch({
+            type: "SUCCESS_GET_VENDOR_BSPAYFLEXI",
+            payload: response.data,
+          });
+          console.log("masuk ke12 bspay");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   };
 };
 export const getVendorFlexi = () => {
-  return async (dispatch, timeout) => {
+  return async (dispatch, getState, timeout) => {
     dispatch({ type: "ACTIVATE_LOADING_VENDOR" });
     const loadingTime = 2000;
     timeout = (ms) => {
       return new Promise((resolve) => setTimeout(resolve, ms));
     };
     await timeout(loadingTime);
-    axios({
-      method: "GET",
-      url: "https://127.0.0.1:5000/vendor",
-      params: {
-        country_id: 2,
-      },
-    })
-      .then(async (response) => {
-        dispatch({
-          type: "SUCCESS_GET_VENDOR_BSPAYFLEXI",
-          payload: response.data,
-        });
+    const negara = getState().filter.countryID,
+      kota = getState().filter.cityID,
+      kategori = getState().filter.categoryID,
+      budget = getState().filter.budget;
+    let param;
+    if (negara == 0 && budget == 0 && kategori == 0 && kota == 0) {
+      axios({
+        method: "GET",
+        url: "https://127.0.0.1:5000/vendor",
+        params: {
+          flexi_schedule: true,
+        },
       })
-      .catch((error) => {
-        console.log(error);
-      });
+        .then(async (response) => {
+          dispatch({
+            type: "SUCCESS_GET_VENDOR_BSPAYFLEXI",
+            payload: response.data,
+          });
+          console.log("masuk ke1 flexi");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else if (negara != 0 && kota != 0 && budget != 0 && kategori != 0) {
+      param = {
+        country_id: getState().filter.countryID,
+        city_id: getState().filter.cityID,
+        category_id: getState().filter.categoryID,
+        budget: getState().filter.budget,
+        flexi_schedule: true,
+      };
+      axios({
+        method: "GET",
+        url: "https://127.0.0.1:5000/vendor",
+        params: param,
+      })
+        .then(async (response) => {
+          dispatch({
+            type: "SUCCESS_GET_VENDOR_BSPAYFLEXI",
+            payload: response.data,
+          });
+          console.log("masuk ke2 flexi");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else if (negara == 0 && budget != 0 && kategori != 0) {
+      param = {
+        category_id: getState().filter.categoryID,
+        budget: getState().filter.budget,
+        flexi_schedule: true,
+      };
+      axios({
+        method: "GET",
+        url: "https://127.0.0.1:5000/vendor",
+        params: param,
+      })
+        .then(async (response) => {
+          dispatch({
+            type: "SUCCESS_GET_VENDOR_BSPAYFLEXI",
+            payload: response.data,
+          });
+          console.log("masuk ke3 flexi");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else if (negara == 0 && budget != 0 && kategori == 0) {
+      param = {
+        budget: getState().filter.budget,
+        flexi_schedule: true,
+      };
+      axios({
+        method: "GET",
+        url: "https://127.0.0.1:5000/vendor",
+        params: param,
+      })
+        .then(async (response) => {
+          dispatch({
+            type: "SUCCESS_GET_VENDOR_BSPAYFLEXI",
+            payload: response.data,
+          });
+          console.log("masuk ke4 flexi");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else if (negara == 0 && budget == 0 && kategori != 0) {
+      param = {
+        category_id: getState().filter.categoryID,
+        flexi_schedule: true,
+      };
+      axios({
+        method: "GET",
+        url: "https://127.0.0.1:5000/vendor",
+        params: param,
+      })
+        .then(async (response) => {
+          dispatch({
+            type: "SUCCESS_GET_VENDOR_BSPAYFLEXI",
+            payload: response.data,
+          });
+          console.log("masuk ke5 flexi");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else if (negara != 0 && kota == 0 && budget == 0 && kategori == 0) {
+      param = {
+        country_id: getState().filter.countryID,
+        flexi_schedule: true,
+      };
+      axios({
+        method: "GET",
+        url: "https://127.0.0.1:5000/vendor",
+        params: param,
+      })
+        .then(async (response) => {
+          dispatch({
+            type: "SUCCESS_GET_VENDOR_BSPAYFLEXI",
+            payload: response.data,
+          });
+          console.log("masuk ke6 flexi");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else if (negara != 0 && kota != 0 && budget == 0 && kategori == 0) {
+      param = {
+        country_id: getState().filter.countryID,
+        city_id: getState().filter.cityID,
+        flexi_schedule: true,
+      };
+      axios({
+        method: "GET",
+        url: "https://127.0.0.1:5000/vendor",
+        params: param,
+      })
+        .then(async (response) => {
+          dispatch({
+            type: "SUCCESS_GET_VENDOR_BSPAYFLEXI",
+            payload: response.data,
+          });
+          console.log("masuk ke7 flexi");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else if (negara != 0 && kota != 0 && budget == 0 && kategori != 0) {
+      param = {
+        country_id: getState().filter.countryID,
+        city_id: getState().filter.cityID,
+        category_id: getState().filter.categoryID,
+        flexi_schedule: true,
+      };
+      axios({
+        method: "GET",
+        url: "https://127.0.0.1:5000/vendor",
+        params: param,
+      })
+        .then(async (response) => {
+          dispatch({
+            type: "SUCCESS_GET_VENDOR_BSPAYFLEXI",
+            payload: response.data,
+          });
+          console.log("masuk ke8 flexi");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else if (negara != 0 && kota == 0 && budget == 0 && kategori != 0) {
+      param = {
+        country_id: getState().filter.countryID,
+        category_id: getState().filter.categoryID,
+        flexi_schedule: true,
+      };
+      axios({
+        method: "GET",
+        url: "https://127.0.0.1:5000/vendor",
+        params: param,
+      })
+        .then(async (response) => {
+          dispatch({
+            type: "SUCCESS_GET_VENDOR_BSPAYFLEXI",
+            payload: response.data,
+          });
+          console.log("masuk ke9 flexi");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else if (negara != 0 && kota != 0 && budget != 0 && kategori == 0) {
+      param = {
+        country_id: getState().filter.countryID,
+        city_id: getState().filter.cityID,
+        budget: getState().filter.budget,
+        flexi_schedule: true,
+      };
+      axios({
+        method: "GET",
+        url: "https://127.0.0.1:5000/vendor",
+        params: param,
+      })
+        .then(async (response) => {
+          dispatch({
+            type: "SUCCESS_GET_VENDOR_BSPAYFLEXI",
+            payload: response.data,
+          });
+          console.log("masuk ke10 flexi");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else if (negara != 0 && kota == 0 && budget != 0 && kategori == 0) {
+      param = {
+        country_id: getState().filter.countryID,
+        budget: getState().filter.budget,
+        flexi_schedule: true,
+      };
+      axios({
+        method: "GET",
+        url: "https://127.0.0.1:5000/vendor",
+        params: param,
+      })
+        .then(async (response) => {
+          dispatch({
+            type: "SUCCESS_GET_VENDOR_BSPAYFLEXI",
+            payload: response.data,
+          });
+          console.log("masuk ke11 flexi");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else if (negara != 0 && kota != 0 && budget == 0 && kategori == 0) {
+      param = {
+        country_id: getState().filter.countryID,
+        city_id: getState().filter.cityID,
+        flexi_schedule: true,
+      };
+      axios({
+        method: "GET",
+        url: "https://127.0.0.1:5000/vendor",
+        params: param,
+      })
+        .then(async (response) => {
+          dispatch({
+            type: "SUCCESS_GET_VENDOR_BSPAYFLEXI",
+            payload: response.data,
+          });
+          console.log("masuk ke12 flexi");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+
+    // axios({
+    //   method: "GET",
+    //   url: "https://127.0.0.1:5000/vendor",
+    //   params: {
+    //     country_id: 2,
+    //   },
+    // })
+    //   .then(async (response) => {
+    //     dispatch({
+    //       type: "SUCCESS_GET_VENDOR_BSPAYFLEXI",
+    //       payload: response.data,
+    //     });
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
   };
 };
+
 export const getVendorBspayFlexi = () => {
-  return async (dispatch, timeout) => {
+  return async (dispatch, getState, timeout) => {
     dispatch({ type: "ACTIVATE_LOADING_VENDOR" });
     const loadingTime = 2000;
     timeout = (ms) => {
       return new Promise((resolve) => setTimeout(resolve, ms));
     };
     await timeout(loadingTime);
-    axios({
-      method: "GET",
-      url: "https://127.0.0.1:5000/vendor",
-      params: {
-        country_id: 2,
-        bridestory_pay: true,
-      },
-    })
-      .then(async (response) => {
-        dispatch({
-          type: "SUCCESS_GET_VENDOR_BSPAYFLEXI",
-          payload: response.data,
-        });
+
+    const negara = getState().filter.countryID,
+      kota = getState().filter.cityID,
+      kategori = getState().filter.categoryID,
+      budget = getState().filter.budget;
+    let param;
+    if (negara == 0 && budget == 0 && kategori == 0 && kota == 0) {
+      axios({
+        method: "GET",
+        url: "https://127.0.0.1:5000/vendor",
+        params: {
+          flexi_schedule: true,
+          bridestory_pay: true,
+        },
       })
-      .catch((error) => {
-        console.log(error);
-      });
+        .then(async (response) => {
+          dispatch({
+            type: "SUCCESS_GET_VENDOR_BSPAYFLEXI",
+            payload: response.data,
+          });
+          console.log("masuk ke1 bspayflexi");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else if (negara != 0 && kota != 0 && budget != 0 && kategori != 0) {
+      param = {
+        country_id: getState().filter.countryID,
+        city_id: getState().filter.cityID,
+        category_id: getState().filter.categoryID,
+        budget: getState().filter.budget,
+        flexi_schedule: true,
+      };
+      axios({
+        method: "GET",
+        url: "https://127.0.0.1:5000/vendor",
+        params: param,
+      })
+        .then(async (response) => {
+          dispatch({
+            type: "SUCCESS_GET_VENDOR_BSPAYFLEXI",
+            payload: response.data,
+          });
+          console.log("masuk ke2 bspayflexi");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else if (negara == 0 && budget != 0 && kategori != 0) {
+      param = {
+        category_id: getState().filter.categoryID,
+        budget: getState().filter.budget,
+        flexi_schedule: true,
+        bridestory_pay: true,
+      };
+      axios({
+        method: "GET",
+        url: "https://127.0.0.1:5000/vendor",
+        params: param,
+      })
+        .then(async (response) => {
+          dispatch({
+            type: "SUCCESS_GET_VENDOR_BSPAYFLEXI",
+            payload: response.data,
+          });
+          console.log("masuk ke3 bspayflexi");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else if (negara == 0 && budget != 0 && kategori == 0) {
+      param = {
+        budget: getState().filter.budget,
+        flexi_schedule: true,
+        bridestory_pay: true,
+      };
+      axios({
+        method: "GET",
+        url: "https://127.0.0.1:5000/vendor",
+        params: param,
+      })
+        .then(async (response) => {
+          dispatch({
+            type: "SUCCESS_GET_VENDOR_BSPAYFLEXI",
+            payload: response.data,
+          });
+          console.log("masuk ke4 bspayflexi");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else if (negara == 0 && budget == 0 && kategori != 0) {
+      param = {
+        category_id: getState().filter.categoryID,
+        bridestory_pay: true,
+
+        flexi_schedule: true,
+      };
+      axios({
+        method: "GET",
+        url: "https://127.0.0.1:5000/vendor",
+        params: param,
+      })
+        .then(async (response) => {
+          dispatch({
+            type: "SUCCESS_GET_VENDOR_BSPAYFLEXI",
+            payload: response.data,
+          });
+          console.log("masuk ke5 bspayflexi");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else if (negara != 0 && kota == 0 && budget == 0 && kategori == 0) {
+      param = {
+        country_id: getState().filter.countryID,
+        flexi_schedule: true,
+        bridestory_pay: true,
+      };
+      axios({
+        method: "GET",
+        url: "https://127.0.0.1:5000/vendor",
+        params: param,
+      })
+        .then(async (response) => {
+          dispatch({
+            type: "SUCCESS_GET_VENDOR_BSPAYFLEXI",
+            payload: response.data,
+          });
+          console.log("masuk ke6 bspayflexi");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else if (negara != 0 && kota != 0 && budget == 0 && kategori == 0) {
+      param = {
+        country_id: getState().filter.countryID,
+        city_id: getState().filter.cityID,
+        flexi_schedule: true,
+        bridestory_pay: true,
+      };
+      axios({
+        method: "GET",
+        url: "https://127.0.0.1:5000/vendor",
+        params: param,
+      })
+        .then(async (response) => {
+          dispatch({
+            type: "SUCCESS_GET_VENDOR_BSPAYFLEXI",
+            payload: response.data,
+          });
+          console.log("masuk ke7 bspayflexi");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else if (negara != 0 && kota != 0 && budget == 0 && kategori != 0) {
+      param = {
+        country_id: getState().filter.countryID,
+        city_id: getState().filter.cityID,
+        category_id: getState().filter.categoryID,
+        flexi_schedule: true,
+        bridestory_pay: true,
+      };
+      axios({
+        method: "GET",
+        url: "https://127.0.0.1:5000/vendor",
+        params: param,
+      })
+        .then(async (response) => {
+          dispatch({
+            type: "SUCCESS_GET_VENDOR_BSPAYFLEXI",
+            payload: response.data,
+          });
+          console.log("masuk ke8 bspayflexi");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else if (negara != 0 && kota == 0 && budget == 0 && kategori != 0) {
+      param = {
+        country_id: getState().filter.countryID,
+        category_id: getState().filter.categoryID,
+        flexi_schedule: true,
+        bridestory_pay: true,
+      };
+      axios({
+        method: "GET",
+        url: "https://127.0.0.1:5000/vendor",
+        params: param,
+      })
+        .then(async (response) => {
+          dispatch({
+            type: "SUCCESS_GET_VENDOR_BSPAYFLEXI",
+            payload: response.data,
+          });
+          console.log("masuk ke9 bspayflexi");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else if (negara != 0 && kota != 0 && budget != 0 && kategori == 0) {
+      param = {
+        country_id: getState().filter.countryID,
+        city_id: getState().filter.cityID,
+        budget: getState().filter.budget,
+        flexi_schedule: true,
+        bridestory_pay: true,
+      };
+      axios({
+        method: "GET",
+        url: "https://127.0.0.1:5000/vendor",
+        params: param,
+      })
+        .then(async (response) => {
+          dispatch({
+            type: "SUCCESS_GET_VENDOR_BSPAYFLEXI",
+            payload: response.data,
+          });
+          console.log("masuk ke10 bspayflexi");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else if (negara != 0 && kota == 0 && budget != 0 && kategori == 0) {
+      param = {
+        country_id: getState().filter.countryID,
+        budget: getState().filter.budget,
+        flexi_schedule: true,
+        bridestory_pay: true,
+      };
+      axios({
+        method: "GET",
+        url: "https://127.0.0.1:5000/vendor",
+        params: param,
+      })
+        .then(async (response) => {
+          dispatch({
+            type: "SUCCESS_GET_VENDOR_BSPAYFLEXI",
+            payload: response.data,
+          });
+          console.log("masuk ke11 bspayflexi");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else if (negara != 0 && kota != 0 && budget == 0 && kategori == 0) {
+      param = {
+        country_id: getState().filter.countryID,
+        city_id: getState().filter.cityID,
+        flexi_schedule: true,
+        bridestory_pay: true,
+      };
+      axios({
+        method: "GET",
+        url: "https://127.0.0.1:5000/vendor",
+        params: param,
+      })
+        .then(async (response) => {
+          dispatch({
+            type: "SUCCESS_GET_VENDOR_BSPAYFLEXI",
+            payload: response.data,
+          });
+          console.log("masuk ke12 bspayflexi");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   };
 };
 export const changeInputFilterKota = (e) => {

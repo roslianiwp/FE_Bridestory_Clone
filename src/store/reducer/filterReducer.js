@@ -63,10 +63,10 @@ export default function filterReducer(filterState = initialState, action) {
         ...filterState,
         dataVendor: action.payload,
         isLoadingVendor: false,
-        categoryID: 0,
-        cityID: 0,
-        countryID: 0,
-        budget: 0,
+        // categoryID: 0,
+        // cityID: 0,
+        // countryID: 0,
+        // budget: 0,
       };
     default:
       return filterState;
