@@ -38,8 +38,6 @@ class Vendors extends React.Component {
 
   handleChangeBspay = async () => {
     this.setState({ checkedBspay: !this.state.checkedBspay });
-    console.log("bspay", this.state.checkedBspay);
-    console.log("flex", this.state.checkedFlexi);
     if (
       this.state.checkedBspay === false &&
       this.state.checkedFlexi === false
@@ -60,8 +58,6 @@ class Vendors extends React.Component {
 
   handleChangeFlexi = async () => {
     this.setState({ checkedFlexi: !this.state.checkedFlexi });
-    console.log("bspay dari flexi", this.state.checkedBspay);
-    console.log("flex dari flexi", this.state.checkedFlexi);
     if (
       this.state.checkedBspay === false &&
       this.state.checkedFlexi === false
@@ -99,7 +95,6 @@ class Vendors extends React.Component {
   render() {
     const login = localStorage.getItem("is_login");
     if (login === false) {
-      // alert("anda belum login!");
       return (
         <Redirect
           to={{
