@@ -5,7 +5,7 @@ export const getKategori = () => {
     await dispatch({ type: "ACTIVATE_LOADING" });
     axios({
       method: "GET",
-      url: "https://127.0.0.1:5000/category",
+      url: "https://weddingbe.roslianistory.my.id/category",
     })
       .then(async (response) => {
         dispatch({ type: "SUCCESS_GET_CATEGORY", payload: response.data });
@@ -21,7 +21,7 @@ export const getNegara = () => {
     await dispatch({ type: "ACTIVATE_LOADING" });
     axios({
       method: "GET",
-      url: "https://127.0.0.1:5000/country",
+      url: "https://weddingbe.roslianistory.my.id/country",
     })
       .then(async (response) => {
         dispatch({ type: "SUCCESS_GET_COUNTRY", payload: response.data });
@@ -37,7 +37,7 @@ export const getKota = () => {
     await dispatch({ type: "ACTIVATE_LOADING" });
     axios({
       method: "GET",
-      url: "https://127.0.0.1:5000/city",
+      url: "https://weddingbe.roslianistory.my.id/city",
       params: {
         country_id: getState().filter.countryID,
       },
@@ -168,7 +168,7 @@ export const getVendor = () => {
     }
     axios({
       method: "GET",
-      url: "https://127.0.0.1:5000/vendor",
+      url: "https://weddingbe.roslianistory.my.id/vendor",
       params: param,
     })
       .then(async (response) => {
@@ -309,7 +309,7 @@ export const getVendorBspay = () => {
     }
     axios({
       method: "GET",
-      url: "https://127.0.0.1:5000/vendor",
+      url: "https://weddingbe.roslianistory.my.id/vendor",
       params: param,
     })
       .then(async (response) => {
@@ -452,7 +452,7 @@ export const getVendorFlexi = () => {
     }
     axios({
       method: "GET",
-      url: "https://127.0.0.1:5000/vendor",
+      url: "https://weddingbe.roslianistory.my.id/vendor",
       params: param,
     })
       .then(async (response) => {
@@ -607,7 +607,7 @@ export const getVendorBspayFlexi = () => {
     }
     axios({
       method: "GET",
-      url: "https://127.0.0.1:5000/vendor",
+      url: "https://weddingbe.roslianistory.my.id/vendor",
       params: param,
     })
       .then(async (response) => {

@@ -105,7 +105,6 @@ class Home extends React.Component {
             </MDBContainer>
           </MDBJumbotron>
           {/* NAVIGATIONBAR */}
-
           <NavBar {...this.props} />
           <CarouselHome />
           <Footer />

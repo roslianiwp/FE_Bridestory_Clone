@@ -16,6 +16,7 @@
     "react-github-login": "^1.0.3",
     "react-google-login": "^5.1.20",
     "react-multi-carousel": "^2.5.5",
+    "react-parallax": "^3.0.3",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",

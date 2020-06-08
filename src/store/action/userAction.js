@@ -5,7 +5,7 @@ export const doLogin = () => {
     await dispatch({ type: "ACTIVATE_LOADING" });
     axios({
       method: "GET",
-      url: "https://127.0.0.1:5000/login",
+      url: "https://weddingbe.roslianistory.my.id/login",
       params: {
         email: getState().user.emailPengguna,
         password: getState().user.kataKunci,
@@ -20,12 +20,12 @@ export const doLogin = () => {
       })
       .catch(async (response) => {
         // kondisi kalau salah password
-        if (response == "Error: Request failed with status code 403") {
+        if (+response === +"Error: Request failed with status code 403") {
           alert("password anda salah!");
           dispatch({ type: "DEACTIVATE_LOADING" });
         }
         // kondisi kalau belum terdaftar
-        else if (response == "Error: Request failed with status code 404") {
+        else if (+response === +"Error: Request failed with status code 404") {
           await dispatch(doSignUp);
           dispatch({ type: "MAU_SIGNUP" });
         }
@@ -44,7 +44,7 @@ export const doSignUp = () => {
     };
     const myJSON = JSON.stringify(bodyRequest);
     await axios
-      .post("https://127.0.0.1:5000/client", myJSON, {
+      .post("https://weddingbe.roslianistory.my.id/client", myJSON, {
         headers: {
           "Content-Type": "application/json; charset=utf-8",
           Accept: "application/json; charset=utf-8",
