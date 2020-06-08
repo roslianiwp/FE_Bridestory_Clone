@@ -20,12 +20,12 @@ export const doLogin = () => {
       })
       .catch(async (response) => {
         // kondisi kalau salah password
-        if (+response === +"Error: Request failed with status code 403") {
+        if (response == "Error: Request failed with status code 403") {
           alert("password anda salah!");
           dispatch({ type: "DEACTIVATE_LOADING" });
         }
         // kondisi kalau belum terdaftar
-        else if (+response === +"Error: Request failed with status code 404") {
+        else if (response == "Error: Request failed with status code 404") {
           await dispatch(doSignUp);
           dispatch({ type: "MAU_SIGNUP" });
         }
