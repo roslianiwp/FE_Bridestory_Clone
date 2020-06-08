@@ -90,7 +90,7 @@ export const logInFB = (response) => {
       });
     } else {
       await dispatch({ type: "DEACTIVATE_LOADING" });
-      alert("anda belum berhasil login");
+      // alert("anda belum berhasil login");
     }
   };
 };
@@ -119,7 +119,7 @@ export const logInGoogle = (response) => {
       });
     } else {
       await dispatch({ type: "DEACTIVATE_LOADING" });
-      alert("anda belum berhasil login");
+      // alert("anda belum berhasil login");
     }
   };
 };
