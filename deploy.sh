@@ -6,4 +6,4 @@ echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-st
 sudo docker stop bridestorydemofe
 sudo docker rm bridestorydemofe
 sudo docker rmi roslianiwp/bridestory_fe:latest
-sudo docker run -d --name bridestorydemofe -p 5050:5050 roslianiwp/bridestory_fe:latest
+sudo docker run -d --name bridestorydemofe -p 8443:80 roslianiwp/bridestory_fe:latest
