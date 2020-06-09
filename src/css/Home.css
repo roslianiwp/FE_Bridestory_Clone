@@ -6,7 +6,7 @@
   background-color: black;
   background-image: url("../images/jumbotron.png");
   background-size: cover;
-  min-height: 100% !important;
+  min-height: 700px !important;
   animation: jumbo_anim 60s linear;
   /* animation-direction: normal; */
 }
@@ -37,7 +37,7 @@
   content: "";
   display: block;
   width: 100%;
-  min-height: 100% !important;
+  min-height: 110% !important;
   background-color: rgba(85, 85, 85, 0.5);
   position: absolute;
   top: -20px;
