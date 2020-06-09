@@ -15,7 +15,7 @@ const NavBar = (props, toVendor) => {
   return (
     <Fragment>
       <MDBNavbar expand="md" className="navini">
-        <MDBRow className="navku">
+        <MDBRow>
           <MDBNavLink to="#!" className="menu">
             Store
             <div id="badge-new">New</div>
