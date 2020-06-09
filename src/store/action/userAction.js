@@ -16,15 +16,18 @@ export const doLogin = () => {
           dispatch({ type: "SUCCESS_LOGIN", payload: response.data });
           localStorage.setItem("token", response.data.token);
           localStorage.setItem("is_login", true);
+          localStorage.setItem("nama", `${response.data.firstName} ${response.data.lastName}`);
         }
       })
       .catch(async (response) => {
         // kondisi kalau salah password
+        // eslint-disable-next-line
         if (response == "Error: Request failed with status code 403") {
           alert("password anda salah!");
           dispatch({ type: "DEACTIVATE_LOADING" });
         }
         // kondisi kalau belum terdaftar
+        // eslint-disable-next-line
         else if (response == "Error: Request failed with status code 404") {
           await dispatch(doSignUp);
           dispatch({ type: "MAU_SIGNUP" });
