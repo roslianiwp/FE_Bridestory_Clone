@@ -51,8 +51,8 @@ class Home extends React.Component {
       <Fragment>
         <div className="bodi">
           {/* JUMBOTRON */}
-          <MDBJumbotron fluid className="jumbotron">
-            <MDBContainer className="container">
+          <MDBJumbotron fluid className="jumbotronjumbs">
+            <MDBContainer className="containerjumbs">
               <MDBRow>
                 <MDBCol md={5}>
                   <h3 className="h3">Join Bridestory and get access to</h3>

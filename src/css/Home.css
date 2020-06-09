@@ -2,11 +2,11 @@
   background-image: url("https://alexandra.bridestory.com/image/upload/f_auto,dpr_auto,q_80,fl_progressive/assets/bg-landing2x-SkNfGMwsX.jpg");
   background-size: cover;
 }
-.jumbotron {
+.jumbotronjumbs {
   background-color: black;
   background-image: url("../images/jumbotron.png");
   background-size: cover;
-  height: 600px !important;
+  min-height: 600px !important;
   animation: jumbo_anim 60s linear;
   /* animation-direction: normal; */
 }
@@ -28,19 +28,20 @@
   }
 }
 
-.jumbotron .container {
+.jumbotronjumbs .containerjumbs {
   z-index: 1;
   position: relative;
 }
 
-.jumbotron::after {
+.jumbotronjumbs::after {
   content: "";
   display: block;
   width: 100%;
-  height: 750px !important;
+  min-height: 100% !important;
   background-color: rgba(85, 85, 85, 0.5);
   position: absolute;
-  bottom: 0;
+  top: -20px;
+  bottom: -20px;
 }
 
 .h3 {
