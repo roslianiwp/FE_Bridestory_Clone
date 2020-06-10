@@ -7,6 +7,7 @@
   background-image: url("../images/jumbotron.png");
   background-size: cover;
   min-height: 710px !important;
+  position: relative;
   animation: jumbo_anim 60s linear;
   /* animation-direction: normal; */
 }
