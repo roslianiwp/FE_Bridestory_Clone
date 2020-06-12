@@ -133,14 +133,16 @@
 .login {
   margin-right: -200px;
   background-color: #ffffff;
-  padding-right: 70px;
-  padding-left: 70px;
+  /* padding-right: 70px;
+  padding-left: 70px; */
   padding-top: 20px;
   padding-bottom: 0px;
+  margin-bottom: 0px;
   border-radius: 18px 18px 0 0;
   box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.24);
-  margin-top: -30px; 
+  margin-top: -30px;
   height: 650px;
+  width: 451px;
 }
 
 .login p {
@@ -173,14 +175,15 @@
 }
 
 .join-vendor {
-  margin-top: 0px;
-  margin-right: 5px;
-  width: 39.5%;
+  /* margin-top: -25px; */
+  /* margin-right: 5px; */
+  min-width: 100%;
   /* width: 451px; */
   font-size: 15px;
   background-color: hsla(0, 0%, 100%, 0.8);
   border-radius: 0 0 18px 18px;
   color: #848484;
+  /* padding: 3px; */
 }
 
 .join-vendor span {
@@ -217,20 +220,43 @@
   margin-bottom: 10px !important;
 }
 .signupku {
-  padding-right: 0px !important;
-  margin-right: 0px !important;
+  /* padding-right: 0px !important;
+  margin-right: 0px !important; */
+  /* padding-right: 70px;
+  padding-left: 70px; */
+}
+.join-vendor-tag {
+  margin-top: 0px !important;
+  padding: 10px;
+}
+/* .join-vendor-signup {
+  margin-top: 50px;
+} */
+.join-vendor-signup {
+  margin-top: 95px;
+  font-size: 15px;
+  background-color: hsla(0, 0%, 100%, 0.8);
+  border-radius: 0 0 18px 18px;
+  color: #848484;
+  /* padding: 3px; */
 }
 
-@media (min-width: 992px) and (max-width: 1199.98px) { 
-  .join-vendor 
-  {
-    margin-top: 0px;
-    margin-right: 5px;
-    width: 38%;
-    /* width: 451px; */
-    font-size: 15px;
-    background-color: hsla(0, 0%, 100%, 0.8);
-    border-radius: 0 0 18px 18px;
-    color: #848484;
-  }
+.join-vendor-signup span {
+  color: #eba1a1;
+  letter-spacing: 0.21px;
+  line-height: 20px;
+}
+
+.text-center .buton-signup {
+  margin-left: 15px;
+  margin-top: 0px !important;
+  border-radius: 5px;
+  font-size: 18px !important;
+  width: 300px;
+  color: #ffffff !important;
+  background-color: #eba1a1 !important;
+  border-radius: 5px !important;
+  border-style: none;
+  padding: 12px 0;
+  overflow: hidden;
 }

@@ -13,7 +13,6 @@ import "../css/Home.css";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import KotakLogIn from "../components/KotakLogIn";
-import JoinVendor from "../components/JoinVendor";
 import CarouselHome from "../components/Carousel";
 import ModalKu from "../components/Modal";
 
@@ -101,7 +100,7 @@ class Home extends React.Component {
                 {/* KOTAK LOGIN */}
                 <KotakLogIn {...this.props} login={this.props.login} />
               </MDBRow>
-              <JoinVendor />
+              {/* <JoinVendor /> */}
             </MDBContainer>
           </MDBJumbotron>
           {/* NAVIGATIONBAR */}

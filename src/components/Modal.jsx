@@ -73,6 +73,17 @@ const ModalKu = (props, clickSignUp) => {
                     applied.
                   </p>
                 </MDBRow>
+                <MDBRow>
+                  <p className="tncp-modal">
+                    <hr
+                      style={{
+                        marginTop: "50px",
+                      }}
+                    />
+                    Have a wedding business?
+                    <span className="tncspan-modal"> Join us as a vendor.</span>
+                  </p>
+                </MDBRow>
               </div>
             ) : (
               <div>
@@ -163,21 +174,20 @@ const ModalKu = (props, clickSignUp) => {
                     applied.
                   </p>
                 </MDBRow>
+                <MDBRow>
+                  <p className="tncp-modal">
+                    <hr
+                      style={{
+                        marginBottom: "10px",
+                        marginTop: "-10px",
+                      }}
+                    />
+                    Have a wedding business?
+                    <span className="tncspan-modal"> Join us as a vendor.</span>
+                  </p>
+                </MDBRow>
               </div>
             )}
-            <MDBRow>
-              {/* <br /> */}
-              <p className="tncp-modal">
-                <hr
-                  style={{
-                    marginBottom: "10px",
-                    marginTop: "-10px",
-                  }}
-                />
-                Have a wedding business?
-                <span className="tncspan-modal"> Join us as a vendor.</span>
-              </p>
-            </MDBRow>
           </div>
         </MDBCol>
       </MDBRow>
