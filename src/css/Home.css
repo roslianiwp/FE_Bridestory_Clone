@@ -175,7 +175,8 @@
 .join-vendor {
   margin-top: 0px;
   margin-right: 5px;
-  width: 451px;
+  width: 39.5%;
+  /* width: 451px; */
   font-size: 15px;
   background-color: hsla(0, 0%, 100%, 0.8);
   border-radius: 0 0 18px 18px;
