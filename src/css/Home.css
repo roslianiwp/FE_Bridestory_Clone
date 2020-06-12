@@ -9,7 +9,6 @@
   min-height: 710px !important;
   position: relative;
   animation: jumbo_anim 60s linear;
-  /* animation-direction: normal; */
 }
 @keyframes jumbo_anim {
   0% {
@@ -41,7 +40,6 @@
   min-height: 100% !important;
   background-color: rgba(85, 85, 85, 0.5);
   position: absolute;
-  /* top: -20px; */
   bottom: 0px;
 }
 
@@ -93,7 +91,6 @@
   letter-spacing: 0.2px;
   line-height: 22px;
   margin-left: 10px;
-  /* margin-top: -100px; */
 }
 
 .kotak-kecil-login {
@@ -133,8 +130,6 @@
 .login {
   margin-right: -200px;
   background-color: #ffffff;
-  /* padding-right: 70px;
-  padding-left: 70px; */
   padding-top: 20px;
   padding-bottom: 0px;
   margin-bottom: 0px;
@@ -164,6 +159,7 @@
   letter-spacing: 0.2px;
   line-height: 20px;
   color: #848484;
+  margin-bottom: 0px !important;
 }
 
 .tncspan {
@@ -175,15 +171,11 @@
 }
 
 .join-vendor {
-  /* margin-top: -25px; */
-  /* margin-right: 5px; */
   min-width: 100%;
-  /* width: 451px; */
   font-size: 15px;
   background-color: hsla(0, 0%, 100%, 0.8);
   border-radius: 0 0 18px 18px;
   color: #848484;
-  /* padding: 3px; */
 }
 
 .join-vendor span {
@@ -199,7 +191,6 @@
 
 .join-vendor-modal {
   margin-top: 0px;
-  /* margin-right: 122px; */
   width: 451px;
   font-size: 15px;
   background-color: hsla(0, 0%, 100%, 0.8);
@@ -214,31 +205,22 @@
 }
 .initulisansignup {
   text-align: left !important;
-  /* margin-left: -20px !important; */
   margin-right: 0px !important;
   font-size: 11px;
   margin-bottom: 10px !important;
 }
-.signupku {
-  /* padding-right: 0px !important;
-  margin-right: 0px !important; */
-  /* padding-right: 70px;
-  padding-left: 70px; */
-}
+
 .join-vendor-tag {
   margin-top: 0px !important;
   padding: 10px;
 }
-/* .join-vendor-signup {
-  margin-top: 50px;
-} */
+
 .join-vendor-signup {
   margin-top: 95px;
   font-size: 15px;
   background-color: hsla(0, 0%, 100%, 0.8);
   border-radius: 0 0 18px 18px;
   color: #848484;
-  /* padding: 3px; */
 }
 
 .join-vendor-signup span {
