@@ -91,6 +91,7 @@
   letter-spacing: 0.2px;
   line-height: 22px;
   margin-left: 10px;
+  cursor: pointer;
 }
 
 .kotak-kecil-login {
@@ -159,7 +160,7 @@
   letter-spacing: 0.2px;
   line-height: 20px;
   color: #848484;
-  margin-bottom: 10px !important;
+  margin-bottom: 15px !important;
 }
 
 .tncspan {
@@ -182,6 +183,7 @@
   color: #eba1a1;
   letter-spacing: 0.21px;
   line-height: 20px;
+  cursor: pointer;
 }
 .modal-content {
   background-color: transparent !important;
@@ -202,6 +204,7 @@
   color: #eba1a1;
   letter-spacing: 0.21px;
   line-height: 20px;
+  cursor: pointer;
 }
 .initulisansignup {
   text-align: left !important;

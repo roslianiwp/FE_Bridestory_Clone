@@ -16,7 +16,10 @@ export const doLogin = () => {
           dispatch({ type: "SUCCESS_LOGIN", payload: response.data });
           localStorage.setItem("token", response.data.token);
           localStorage.setItem("is_login", true);
-          localStorage.setItem("nama", `${response.data.firstName} ${response.data.lastName}`);
+          localStorage.setItem(
+            "nama",
+            `${response.data.firstName} ${response.data.lastName}`
+          );
         }
       })
       .catch(async (response) => {
@@ -38,6 +41,8 @@ export const doLogin = () => {
 
 export const doSignUp = () => {
   return async (dispatch, getState) => {
+    const namadepan = getState().user.firstName;
+    const namabelakang = getState().user.lastName;
     await dispatch({ type: "ACTIVATE_LOADING" });
     const bodyRequest = {
       email: getState().user.emailPengguna,
@@ -53,8 +58,10 @@ export const doSignUp = () => {
           Accept: "application/json; charset=utf-8",
         },
       })
-      .then(async (response) => {
+      .then(async (getState) => {
         dispatch({ type: "SUCCESS_SIGNUP" });
+        localStorage.setItem("nama", `${namadepan} ${namabelakang}`);
+        localStorage.setItem("is_login", true);
       })
       .catch(function (error) {
         console.log(error);
@@ -73,6 +80,7 @@ export const changeInputUser = (e) => {
 export const doSignOut = () => {
   localStorage.removeItem("token");
   localStorage.removeItem("is_login");
+  localStorage.removeItem("nama");
   return {
     type: "SUCCESS_LOGOUT",
   };

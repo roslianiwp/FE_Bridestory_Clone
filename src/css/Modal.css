@@ -18,6 +18,7 @@
   color: #eba1a1;
   letter-spacing: 0.21px;
   line-height: 20px;
+  cursor: pointer;
 }
 
 .kotak-kecil-login-modal {
